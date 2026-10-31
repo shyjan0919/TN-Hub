@@ -195,6 +195,24 @@ table{color:#172b3a}th{color:#fff!important;background:#174b68!important}td{colo
 .dashboard-period-card{border:1px solid #c8d8d8;border-radius:22px;padding:clamp(14px,3vw,24px);margin-bottom:18px}
 .compact-period{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media(max-width:600px){.compact-period{grid-template-columns:1fr}.dashboard-period-card .actions .btn{width:100%}.tablewrap{max-width:100%;overflow-x:auto}.card{min-width:0}.ref-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Compact dashboard: move secondary tables and analytics into accessible accordions */
+.dashboard-more{margin:12px 0 16px;border:1px solid #d7e3dc;border-radius:15px;background:#fff;box-shadow:0 4px 16px rgba(20,43,42,.045);overflow:hidden}
+.dashboard-more>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;padding:14px 16px;color:#174a40;font-weight:800;font-size:14px;background:linear-gradient(110deg,#f7faf7,#eef5f0)}
+.dashboard-more>summary::-webkit-details-marker{display:none}
+.dashboard-more>summary:after{content:'＋';flex:0 0 auto;font-size:19px;color:#087f72}
+.dashboard-more[open]>summary:after{content:'−'}
+.dashboard-more>summary span{margin-left:auto;color:#687d73;font-size:11px;font-weight:500;text-align:right}
+.dashboard-more-body{padding:12px;display:grid;gap:12px;min-width:0}
+.dashboard-more-body>.card{margin:0;min-width:0}
+.exec-org-card .tablewrap{max-width:100%;overflow-x:auto}
+.exec-actions-card .exec-action-grid{gap:8px}
+@media(max-width:700px){
+ .dashboard-more>summary{align-items:flex-start;padding:12px;font-size:13px}
+ .dashboard-more>summary span{max-width:42%;line-height:1.4}
+ .dashboard-more-body{padding:8px}
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
@@ -494,6 +512,23 @@ h1,h2,h3{letter-spacing:-.015em;color:inherit}h2{font-weight:800}hr{border:0;bor
 @media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}.side{position:relative;top:auto;min-height:0;border-right:0;border-bottom:1px solid var(--line)}.top{position:sticky;top:0}.card,.panel,.kpi,.stat-card,.feature-card,.report-card,.metric-card,.section-card{border-radius:14px}table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}th,td{white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
 </style>
+
+<style id="tnhub-frosted-glass-navigation">
+/* Frosted-glass navigation: desktop sidebar, sticky header, and mobile bottom bar */
+.top{background:linear-gradient(115deg,rgba(40,20,59,.82),rgba(81,38,108,.78),rgba(121,81,154,.76))!important;backdrop-filter:blur(22px) saturate(165%)!important;-webkit-backdrop-filter:blur(22px) saturate(165%)!important;border-bottom:1px solid rgba(255,255,255,.22)!important;box-shadow:0 8px 30px rgba(39,16,52,.16)!important}
+.side{background:rgba(255,255,255,.60)!important;backdrop-filter:blur(22px) saturate(160%)!important;-webkit-backdrop-filter:blur(22px) saturate(160%)!important;border:1px solid rgba(255,255,255,.56)!important;box-shadow:5px 0 28px rgba(54,28,69,.08)!important}
+.side .nav{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.08)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.side .nav:hover{background:rgba(255,255,255,.42)!important;border-color:rgba(255,255,255,.56)!important}
+.side .nav.active{background:linear-gradient(115deg,rgba(255,255,255,.78),rgba(239,224,248,.66))!important;border:1px solid rgba(255,255,255,.78)!important;box-shadow:inset 0 1px rgba(255,255,255,.8),0 5px 16px rgba(66,35,82,.09)!important}
+.mobile-bottom-nav{background:rgba(47,20,59,.70)!important;backdrop-filter:blur(24px) saturate(180%)!important;-webkit-backdrop-filter:blur(24px) saturate(180%)!important;border-top:1px solid rgba(255,255,255,.28)!important;box-shadow:0 -8px 32px rgba(41,18,52,.20)!important}
+.mobile-bottom-nav button{border:1px solid transparent!important;transition:background .18s ease,border-color .18s ease,transform .18s ease!important}
+.mobile-bottom-nav button.active{background:rgba(255,255,255,.20)!important;border-color:rgba(255,255,255,.25)!important;box-shadow:inset 0 1px rgba(255,255,255,.24),0 4px 14px rgba(20,8,30,.12)!important}
+.mobile-bottom-nav .quick-plus{background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(232,209,244,.86))!important;color:#54276d!important;border:1px solid rgba(255,255,255,.9)!important;box-shadow:0 6px 22px rgba(18,8,25,.24),inset 0 1px #fff!important}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){.top{background:#48245e!important}.side{background:#f5eff8!important}.mobile-bottom-nav{background:#32143f!important}}
+@media(max-width:900px){.side{background:rgba(50,25,67,.78)!important;backdrop-filter:blur(22px) saturate(170%)!important;-webkit-backdrop-filter:blur(22px) saturate(170%)!important;border-color:rgba(255,255,255,.16)!important;box-shadow:0 7px 22px rgba(40,15,54,.12)!important}.side .nav.active{background:rgba(255,255,255,.22)!important;color:#fff!important;box-shadow:inset 0 -2px rgba(255,255,255,.55)!important}}
+@media(prefers-reduced-transparency:reduce){.top,.side,.mobile-bottom-nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#32143f!important}.side{background:#f7f1fa!important}}
+</style>
+
 </head>
 <body><div id="root"><div style="min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f7faff,#edf5ff);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#10264d;text-align:center"><div style="max-width:360px;background:#fff;border:1px solid #dce8f6;border-radius:18px;padding:26px;box-shadow:0 10px 35px #0b3b7410"><div style="font-size:28px;margin-bottom:10px">📊</div><h2 style="margin:0 0 8px">TN State HUB</h2><p style="margin:0;color:#60728f;font-size:14px">Opening your workspace…</p><p style="margin:12px 0 0;color:#8492a6;font-size:12px">Please wait while the secure connection starts.</p></div></div></div>
 <script>
@@ -535,8 +570,8 @@ async function signOut(){try{await auth.signOut()}catch(e){alert('Sign-out faile
 function roleIs(...roles){return !!user&&roles.includes(user.role)}
 function allowedPages(){if(roleIs('ZOH'))return [['dashboard','▦ Tamil Nadu Overview'],['statePerformance','🏛 Tamil Nadu State Performance'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['alerts','⚠ Automatic Alerts'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ YTD Report'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],['reports','▤ Daily / Weekly / Monthly Reports'],['calling','☎ Calling & Disbursement Leaders'],['performance','▥ Target Not Met Review'],['reviews','✓ Commitment & Escalation Review'],['cih','💵 CIH Reconciliation'],['history','◷ Report History & Corrections'],['targets','🎯 Monthly Target Strategy'],['mapping','⌘ Organization Mapping'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']];let p=[['dashboard','▦ Business Overview'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['alerts','⚠ Automatic Alerts'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ YTD Report'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],...(roleIs('DOM')?[['approvals','✓ Pending Approval']]:[]),['bases','▤ Monthly ELA Base'],['bod','◎ BOD Commitments'],['eod','↗ EOD Business Report'],['calling','☎ Calling Report'],['glp','▤ Weekly Gold Loan GLP'],['cih','💵 CIH Reconciliation'],['performance','▥ Performance'],['reviews','✓ Commitment & Escalation Review'],['branchReview','▤ Branch Full History'],['history','◷ History & Corrections']];if(roleIs('SYSTEM_ADMIN'))p.push(['users','♙ User Profiles'],['reset','⚠ Reset Trial Data'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']);return p}
 function nav(){const icons={dashboard:'◈',statePerformance:'🏛',intelligence:'◉',actionPlan:'✦',alerts:'⚠',analytics3:'📊',zohDashboard:'◈',domDashboard:'▦',romDashboard:'⌘',reports:'▤',calling:'◉',performance:'↗',reviews:'✓',cih:'◫',history:'◷',targets:'◎',mapping:'⌘',users:'♙',settings:'⚙'};return allowedPages().map(([k,n])=>`<button class="nav ${page===k?'active':''}" onclick="go('${k}')"><span class="nav-icon" aria-hidden="true">${icons[k]||'◆'}</span><span class="nav-text">${n}</span><span class="nav-arrow" aria-hidden="true">›</span></button>`).join('')}
-function go(p,fromPop=false){if(roleIs('ZOH')&&['bases','bod','eod','users'].includes(p))p='dashboard';if(p==='branchReview'&&selectedBranch==='ALL'){alert('Select a branch first from the dashboard or Target Not Met Review.');return}if(!['businessReportHub','tasksHub','appsHub','profileHub','dashboard','statePerformance','intelligence','actionPlan','alerts','analytics3','branchYtd','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests'].includes(p)){console.warn('Unknown page:',p);return}if(['dashboard','domDashboard','romDashboard'].includes(p)){selectedDivision='ALL';selectedRom='ALL';selectedBranch='ALL';dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom'}page=p;if(!fromPop){try{history.pushState({tnHubPage:p},'',location.href)}catch(e){}}document.querySelector('.side')?.classList.remove('open');render();window.scrollTo({top:0,behavior:'instant'})}
-window.addEventListener('popstate',function(ev){if(!user)return;const target=ev.state&&ev.state.tnHubPage;if(target){go(target,true)}else{try{history.pushState({tnHubPage:page,tnHubGuard:true},'',location.href)}catch(e){}go('dashboard',true)}});
+function go(p,fromPop=false){if(roleIs('ZOH')&&['bases','bod','eod','users'].includes(p))p='dashboard';if(p==='branchReview'&&selectedBranch==='ALL'){alert('Select a branch first from the dashboard or Target Not Met Review.');return}if(!['businessReportHub','tasksHub','appsHub','profileHub','dashboard','statePerformance','intelligence','actionPlan','alerts','analytics3','branchYtd','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests'].includes(p)){console.warn('Unknown page:',p);return}if(['dashboard','domDashboard','romDashboard'].includes(p)){selectedDivision='ALL';selectedRom='ALL';selectedBranch='ALL';dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom'}page=p;if(!fromPop){try{if(!history.state||!history.state.tnHubRoot)history.replaceState({tnHubRoot:true,tnHubPage:page},'',location.href);history.pushState({tnHubPage:p},'',location.href)}catch(e){}}document.querySelector('.side')?.classList.remove('open');render();window.scrollTo({top:0,behavior:'instant'})}
+window.addEventListener('popstate',function(ev){if(!user)return;const target=ev.state&&ev.state.tnHubPage;if(target){page=target;document.querySelector('.side')?.classList.remove('open');render();window.scrollTo({top:0,behavior:'instant'});return}try{history.pushState({tnHubRoot:true,tnHubPage:page},'',location.href)}catch(e){}page='dashboard';render();});
 
 function scopeBranches(){
   if(!user)return[];
@@ -845,19 +880,20 @@ function statePerformancePage(){
  const divRows=groups(b=>b.divisionId||b.divisionName,b=>b);
  const romRows=groups(b=>b.romCode||b.regionId||b.romName,(k,items)=>roms.find(r=>String(r.empCode)===k)?.displayName||roms.find(r=>String(r.empCode)===k)?.name||items[0]?.romName||k);
  const sums=METRICS.map(m=>{const a=bs.reduce((z,b)=>z+actual(b,m),0),tr=bs.map(b=>target(b,m)),configured=tr.some(v=>v!==null),t=tr.reduce((z,v)=>z+(v===null?0:n(v)),0);return {m,a,t,configured,p:t?a/t*100:null}});
- const daily=bs.length?bs.filter(b=>eod.some(x=>String(x.branchCode)===String(b.branchCode)&&x.date===date)).length:0;
+ const daily=bs.length?bs.filter(b=>METRICS.every(m=>eod.some(x=>String(x.branchCode)===String(b.branchCode)&&String(x.date||x.reportingDate||'')===String(date)&&normMetric(x.metric||x.product||x.productName)===normMetric(m)))).length:0;
+ const eodAny=bs.length?bs.filter(b=>eod.some(x=>String(x.branchCode)===String(b.branchCode)&&String(x.date||x.reportingDate||'')===String(date))).length:0;
  const baseDone=bs.filter(b=>bases.some(x=>String(x.branchCode)===String(b.branchCode)&&monthKey(x.month||x.date||x.period)===month)).length;
  const bodDone=bs.filter(b=>bod.some(x=>String(x.branchCode)===String(b.branchCode)&&x.date===date)).length;
  const callingDone=bs.filter(b=>calling.some(x=>String(x.branchCode)===String(b.branchCode)&&x.date===date)).length;
  const tableRows=(arr)=>arr.map(g=>`<tr><td><b>${esc(g.label)}</b><div class="muted">${g.items.length} branches</div></td>${g.metrics.map(x=>`<td>${x.configured?fmt(x.t,x.m):'—'}</td><td>${fmt(x.a,x.m)}</td><td>${x.p===null?'—':x.p.toFixed(1)+'%'}</td>`).join('')}</tr>`).join('');
  const rankRows=sums.map(x=>`<div class="card"><div class="section"><h3>${esc(x.m)}</h3><span>${metricUnit(x.m)==='count'?'Count':'₹ Amount'}</span></div><div class="kpi-grid">${kpiCard('MTD Actual',fmt(x.a,x.m),'Statewide actual','blue')}${kpiCard('Monthly Target',x.configured?fmt(x.t,x.m):'Not available','Configured target records only','cyan')}${kpiCard('Achievement',x.p===null?'—':x.p.toFixed(1)+'%','Actual ÷ target','green')}${kpiCard('Gap',x.configured?fmt(x.t-x.a,x.m):'—','Signed target gap','amber')}</div></div>`).join('');
- return `${head('Tamil Nadu Business Performance','ZOH management cockpit · statewide overview, division/ROM comparisons, reporting coverage and product-wise performance.')}
+ return `${head('Tamil Nadu Business Performance','Phase 4 · Tamil Nadu management cockpit · statewide product scorecards, division/ROM comparisons and reporting completeness.')}
  <div class="card"><div class="filters compact-period"><div class="field"><label>Reporting date</label><input type="date" value="${esc(date)}" onchange="date=this.value;month=date.slice(0,7);refreshData().then(render)"></div><div class="field"><label>Reporting month</label><input class="input" value="${esc(month)}" readonly></div><div class="field"><label>Branches mapped</label><input class="input" value="${bs.length}" readonly></div></div><div class="notice">Statewide totals use the branch mapping currently loaded in this app. Products are reported in their own units; counts and rupee amounts are never combined.</div></div>
- <div class="kpi-grid">${kpiCard('Mapped Branches',bs.length,'Current organization mapping','blue')}${kpiCard('Divisions',new Set(bs.map(b=>b.divisionId||b.divisionName||'Unassigned')).size,'Mapped division groups','cyan')}${kpiCard('ROM Groups',new Set(bs.map(b=>b.romCode||b.regionId||b.romName||'Unassigned')).size,'Mapped ROM groups','green')}${kpiCard('EOD Reports Today',`${daily}/${bs.length}`,bs.length?'Branches with a matching EOD record':'No branches mapped','amber')}</div>
+ <div class="kpi-grid">${kpiCard('Mapped Branches',bs.length,'Current organization mapping','blue')}${kpiCard('Divisions',new Set(bs.map(b=>b.divisionId||b.divisionName||'Unassigned')).size,'Mapped division groups','cyan')}${kpiCard('ROM Groups',new Set(bs.map(b=>b.romCode||b.regionId||b.romName||'Unassigned')).size,'Mapped ROM groups','green')}${kpiCard('EOD Complete Today',`${daily}/${bs.length}`,bs.length?'Branches with all required product EOD records':'No branches mapped','amber')}</div>
  <div class="section"><h3>Statewide product scorecard</h3><span>${esc(month)} · MTD actual versus configured target</span></div><div class="grid">${rankRows}</div>
  <div class="section"><h3>Division-wise performance</h3><span>Target, MTD actual and achievement by product</span></div><div class="tablewrap"><table><thead><tr><th>Division</th>${METRICS.map(m=>`<th>${esc(m)} Target</th><th>${esc(m)} Actual</th><th>${esc(m)} %</th>`).join('')}</tr></thead><tbody>${tableRows(divRows)||'<tr><td colspan="13">No division mapping found.</td></tr>'}</tbody></table></div>
  <div class="section"><h3>ROM-wise performance</h3><span>Regional comparison · same product-specific units</span></div><div class="tablewrap"><table><thead><tr><th>ROM</th>${METRICS.map(m=>`<th>${esc(m)} Target</th><th>${esc(m)} Actual</th><th>${esc(m)} %</th>`).join('')}</tr></thead><tbody>${tableRows(romRows)||'<tr><td colspan="13">No ROM mapping found.</td></tr>'}</tbody></table></div>
- <div class="section"><h3>Reporting completeness</h3><span>Loaded records for ${esc(date)}</span></div><div class="kpi-grid">${kpiCard('ELA Base',`${baseDone}/${bs.length}`,'Branches with a matching monthly base record','blue')}${kpiCard('BOD',`${bodDone}/${bs.length}`,'Branches with a BOD record today','cyan')}${kpiCard('EOD',`${daily}/${bs.length}`,'Branches with an EOD record today','green')}${kpiCard('Calling',`${callingDone}/${bs.length}`,'Branches with a calling record today','amber')}</div>
+ <div class="section"><h3>Reporting completeness</h3><span>Loaded records for ${esc(date)}</span></div><div class="notice">EOD Complete counts a branch only when every configured product has an EOD record for the selected date. BOD counts indicate record presence, not DOM approval. All figures reflect data currently loaded from Firestore.</div><div class="kpi-grid">${kpiCard('ELA Base',`${baseDone}/${bs.length}`,'Branches with a matching monthly base record','blue')}${kpiCard('BOD',`${bodDone}/${bs.length}`,'Branches with a BOD record today','cyan')}${kpiCard('EOD Complete',`${daily}/${bs.length}`,`${eodAny} branches have at least one EOD product record today`,'green')}${kpiCard('Calling',`${callingDone}/${bs.length}`,'Branches with a calling record today','amber')}</div>
 `;
 }
 
@@ -895,7 +931,7 @@ function qualityChecksPage(){
  add('DOM/ROM profiles missing assignment',missingStaff.length,missingStaff.length?missingStaff.map(x=>`${x.empCode||x.name} (${x.role})`).join(', '):'No missing assignment detected in loaded active DOM/ROM profiles.',missingStaff.length?'warn':'ok');
  const card=(c)=>`<div class="card"><div class="section"><h3>${esc(c.title)}</h3><span class="pill" style="${c.level==='ok'?'background:#e8f7ef;color:#166534':c.level==='bad'?'background:#fee2e2;color:#991b1b':'background:#fff7ed;color:#9a3412'}">${esc(String(c.count))}</span></div><div class="sub">${esc(c.detail)}</div></div>`;
  const bad=checks.filter(c=>c.level==='bad').length,warn=checks.filter(c=>c.level==='warn').length;
- return `${head('System Health & QA','Phase 5 · client-side integration checks for loaded data, organization mapping and common data-quality risks.')}
+ return `${head('System Health & Quality Assurance','Client-side integration checks for loaded data, organization mapping and common data-quality risks.')}
  <div class="kpi-grid">${kpiCard('Checks run',checks.length,'Client-side diagnostics','blue')}${kpiCard('Needs attention',bad,'Errors or blocking concerns','red')}${kpiCard('Warnings',warn,'Review before official reporting','amber')}${kpiCard('Loaded branches',bs.length,'Current active branch records','cyan')}</div>
  <div class="card"><div class="section"><h3>Run checks again</h3><button class="btn primary small" onclick="refreshData().then(()=>render())">Refresh Firestore data & recheck</button></div><div class="notice">These checks inspect data currently loaded by this browser. A green result does not prove that Firestore Security Rules are secure, that every role is correctly restricted, or that every workflow works in production.</div></div>
  <div class="grid">${checks.map(card).join('')}</div>
@@ -1108,6 +1144,7 @@ function dashboard(){
       <article class="exec-kpi exec-kpi-alert"><span>Critical alerts</span><strong>${incompleteBranches.length+criticalGapBranches}</strong><small>${incompleteBranches.length} branches with missing reports · ${criticalGapBranches} branches below 50% of at least one configured MTD target.</small><button class="btn outline small" onclick="go('alerts')">Review alerts →</button></article>
     </div>
   </section>
+  <details class="dashboard-more"><summary>Organization performance &amp; actions <span>Open detailed tables and follow-ups</span></summary><div class="dashboard-more-body">
   <section class="card exec-org-card"><div class="section"><div><h3>Organization-wise performance</h3><p class="sub">${orgLabel} · product-specific targets, actuals, achievement and gaps</p></div><button class="btn outline small" onclick="go('branchYtd')">Open YTD Reporting Center →</button></div><div class="tablewrap"><table><thead><tr><th>Organization</th>${METRICS.map(m=>`<th>${esc(m)} Target</th><th>${esc(m)} Actual</th><th>${esc(m)} %</th><th>${esc(m)} Gap</th>`).join('')}<th>Reporting</th></tr></thead><tbody>${orgRows||`<tr><td colspan="${2+METRICS.length*4}">No organization mapping is available in your scope.</td></tr>`}</tbody></table></div></section>
   <section class="card exec-actions-card"><div class="section"><h3>Actions required</h3><span>Prioritized operational follow-up</span></div><div class="exec-action-grid">
     <button class="exec-action" onclick="go('approvals')"><span class="exec-action-count">${pendingApprovals+pendingBod}</span><b>Pending approvals</b><small>Correction requests and commitment approvals</small><i>Review →</i></button>
@@ -1116,10 +1153,12 @@ function dashboard(){
     <button class="exec-action" onclick="go('alerts')"><span class="exec-action-count">${criticalGapBranches}</span><b>Critical target gaps</b><small>Severe shortfall on at least one product target</small><i>Review gaps →</i></button>
     <button class="exec-action" onclick="go('approvals')"><span class="exec-action-count">${pendingCorrections}</span><b>Pending corrections</b><small>Open or awaiting correction requests</small><i>Resolve →</i></button>
   </div></section>
+  </div></details>
   <div class="ref-kpi-grid">
     ${dashboardChart.map((x,i)=>`<section class="ref-product-card product-${i}"><div class="ref-product-top"><div class="ref-product-icon">${['👥','🪙','🏦','🛡️'][i]}</div><div class="ref-product-title">${esc(x.m==='ELA'?'ELA (MFI)':x.m)}</div></div><div class="ref-target-label">Target (MTD)</div><div class="ref-target-value">${metricValue(x.t,x.m)}</div><div class="ref-progress"><span class="${x.p<25?'pct-red':x.p<50?'pct-lightred':x.p<75?'pct-yellow':x.p<=100?'pct-green':'pct-darkgreen'}" style="width:${x.t?Math.min(100,Math.max(0,x.p)):0}%"></span></div><div class="ref-product-bottom"><div><small>Achieved</small><b>${metricValue(x.a,x.m)}</b></div><div><small>Gap</small><b class="${x.t-x.a>0?'negative':'positive'}">${metricGapValue(x.t-x.a,x.m)}</b></div><span class="achievement-badge ${x.p<25?'pct-red':x.p<50?'pct-lightred':x.p<75?'pct-yellow':x.p<=100?'pct-green':'pct-darkgreen'}">${x.p}%</span></div></section>`).join('')}
     <section class="ref-product-card product-calling"><div class="ref-product-top"><div class="ref-product-icon">☎</div><div class="ref-product-title">Calling (Today)</div></div><div class="ref-target-label">Reports submitted</div><div class="ref-target-value">${callRows.length}</div><div class="ref-progress"><span style="width:${Math.min(100,callRows.length?100:0)}%"></span></div><div class="ref-product-bottom"><div><small>Completed outcomes</small><b>${callsCompleted}</b></div><div><small>Balance</small><b class="negative">${callBalance}</b></div></div></section>
   </div>
+  <details class="dashboard-more"><summary>Detailed analytics &amp; reports <span>Branch health, forecasts, charts and daily reports</span></summary><div class="dashboard-more-body">
   <div class="ref-two-panels">
     <section class="card ref-panel"><div class="section"><h3>Today's Commitment vs Achievement</h3><span>${esc(date)} · Product-wise values; no cross-product totals</span></div><div class="tablewrap"><table><thead><tr><th>Product</th><th>Today's Commitment</th><th>Today's Achievement</th><th>Gap</th><th>Achievement %</th></tr></thead><tbody>${eodSummary.map(x=>`<tr><td><b>${esc(x.m)}</b></td><td>${metricValue(x.commitment,x.m)}</td><td>${metricValue(x.achieved,x.m)}</td><td class="${x.gap>0?'negative':'positive'}">${metricGapValue(x.gap,x.m)}</td><td><span class="achievement-badge ${x.p<25?'pct-red':x.p<50?'pct-lightred':x.p<75?'pct-yellow':x.p<=100?'pct-green':'pct-darkgreen'}">${x.p}%</span></td></tr>`).join('')}</tbody></table></div></section>
     <section class="card ref-panel"><div class="section"><h3>Monthly Target vs Achieved (MTD)</h3><span>Selected month</span></div><div class="ref-bar-chart">${dashboardChart.map(x=>`<div class="ref-bar-group"><div class="ref-bar-values"><span>${metricValue(x.t,x.m)}</span><b>${metricValue(x.a,x.m)}</b></div><div class="ref-bars"><div class="ref-bar target" style="height:${x.t?100:0}%"></div><div class="ref-bar achieved" style="height:${x.t?Math.min(100,Math.max(0,x.a/x.t*100)):0}%"></div></div><div class="ref-bar-label">${esc(x.m==='ELA'?'ELA (MFI)':x.m)}</div><span class="achievement-badge ${x.p<25?'pct-red':x.p<50?'pct-lightred':x.p<75?'pct-yellow':x.p<=100?'pct-green':'pct-darkgreen'}">${x.p}%</span></div>`).join('')}</div><div class="chart-legend"><span><i class="legend-dot target-dot"></i>Target</span><span><i class="legend-dot achieved-dot"></i>Achieved</span></div></section>
@@ -1135,7 +1174,8 @@ function dashboard(){
   <div class="ref-bottom-grid ref-highlights">
     <section class="card ref-panel"><div class="section"><h3>Performance Highlights</h3></div><div class="ref-highlight-cards"><div><b>${tracked}</b><span>Branches on track</span></div><div><b>${atRisk}</b><span>Branches below 75%</span></div><div><b>${bs.reduce((sum,b)=>sum+callingValue(todayRow(calling,b.branchCode,date)||{},'disbursed'),0)}</b><span>Disbursements reported</span></div><div><b>${callsCompleted}</b><span>Calling outcomes</span></div></div></section>
     <section class="card ref-panel"><div class="section"><h3>Recent Activities</h3></div>${recent.map((r,i)=>`<div class="ref-activity"><i class="activity-dot dot-${i}"></i><span>${esc(r)}</span></div>`).join('')}</section>
-  </div>`;
+  </div>
+  </div></details>`;
 
 }
 
@@ -1229,22 +1269,41 @@ function updateRegularBase(branchCode){const total=Number($(`base_${branchCode}_
 async function submitBaseBatch(){if(!roleIs('ROM'))return alert('Only ROM can submit ELA base data.');const bs=scopeBranches();if(!bs.length)return alert('No assigned branches are available.');const batch=db.batch(),now=firebase.firestore.FieldValue.serverTimestamp();let writes=0;for(const b of bs){const totalInput=$(`base_${b.branchCode}_ELA`),zeroInput=$(`base_${b.branchCode}_ZERO_POS`);if(!totalInput||totalInput.value.trim()===''||!Number.isInteger(Number(totalInput.value))||Number(totalInput.value)<0)return alert(`Enter a valid total customer count for ${b.branchName||b.branchCode}.`);if(!zeroInput||zeroInput.value.trim()===''||!Number.isInteger(Number(zeroInput.value))||Number(zeroInput.value)<0)return alert(`Enter a valid Zero POS count for ${b.branchName||b.branchCode}.`);const total=Number(totalInput.value),zero=Number(zeroInput.value);if(zero>total)return alert(`Zero POS customers cannot exceed total customers for ${b.branchName||b.branchCode}.`);for(const [type,value] of [['ELA',total],['ZERO_POS',zero]]){const id=`${month}_${b.branchCode}_${type}`.replace(/[^A-Za-z0-9_-]/g,'_');batch.set(db.collection('elaBases').doc(id),{month,branchCode:String(b.branchCode),baseType:type,baseValue:value,divisionId:String(b.divisionId||user.divisionId||''),regionId:String(b.regionId||user.regionId||user.empCode),romCode:String(user.empCode),updatedBy:user.empCode,updatedAt:now,submissionStatus:'PENDING_DOM',submittedBatch:true},{merge:true});writes++;}}try{await batch.commit();await refreshData();render();showSubmissionPopup()}catch(e){console.error('ELA base batch submission failed',e);alert('ELA base submission failed: '+(e.code||e.message))}}
 function domApprovalsPage(){
  if(!roleIs('DOM'))return `${head('Pending Approval','This workspace is available only to DOM users.')}`;
- const bs=scopeBranches(), groups=new Map();
- const addRom=(code)=>{code=String(code||'').trim();if(!code||code==='Unassigned')return null;if(!groups.has(code))groups.set(code,{rom:code,branches:[],bases:[],bod:[],eod:[],calling:[]});return groups.get(code)};
- // Build ROM groups from actual submitted records first. This avoids confusing a region/division ID with the ROM employee code.
+ const bs=branchScopeForDetails(), groups=new Map();
+ const addRom=(code)=>{code=String(code||'').trim();if(!code)return null;if(!groups.has(code))groups.set(code,{rom:code,branches:[],bases:[],bod:[],eod:[],calling:[]});return groups.get(code)};
+ // Start from the DOM's authorized organization mapping, then reconcile report rows by branch
+ // as a fallback for older records whose stored ROM metadata is incomplete.
+ bs.forEach(b=>{const code=String(b.romCode||b.assignedRomEmpCode||b.romEmpCode||branchRomCode(b)||'').trim();const g=addRom(code);if(g&&!g.branches.some(x=>String(x.branchCode)===String(b.branchCode)))g.branches.push(b)});
  const reportRows=[...bod.filter(x=>x.date===date),...eod.filter(x=>x.date===date),...calling.filter(x=>x.date===date),...bases.filter(x=>monthKey(x.month)===month)];
- reportRows.forEach(x=>{const g=addRom(x.romCode||x.updatedByRegion||'');if(g){const b=bs.find(z=>String(z.branchCode)===String(x.branchCode));if(b&&!g.branches.some(y=>String(y.branchCode)===String(b.branchCode)))g.branches.push(b);}});
- bs.forEach(b=>{const code=String(b.romCode||b.assignedRomEmpCode||b.romEmpCode||branchRomCode(b)||'').trim();const g=addRom(code);if(g&&!g.branches.some(y=>String(y.branchCode)===String(b.branchCode)))g.branches.push(b);});
- for(const g of groups.values()){
-  const inGroup=x=>String(x.romCode||'').trim()===g.rom || (!x.romCode && g.branches.some(b=>String(b.branchCode)===String(x.branchCode)));
-  g.bases=bases.filter(x=>inGroup(x)&&monthKey(x.month)===month&&x.submissionStatus==='PENDING_DOM');
-  g.bod=bod.filter(x=>inGroup(x)&&x.date===date&&x.submissionStatus==='PENDING_DOM');
-  g.eod=eod.filter(x=>inGroup(x)&&x.date===date&&x.submissionStatus==='PENDING_DOM');
-  g.calling=calling.filter(x=>inGroup(x)&&x.date===date&&x.submissionStatus==='PENDING_DOM');
- }
- const totalPending=[...groups.values()].reduce((a,g)=>a+g.bases.length+g.bod.length+g.eod.length+g.calling.length,0);
- const action=(g,type,count,label)=>count?`<button class="btn primary small" onclick="approveRomSubmissions('${esc(g.rom)}','${type}')">Approve ${label}</button>`:`<span class="muted">${type==='bod'?'Awaiting morning submission':type==='eod'||type==='calling'?'Awaiting EOD submission':'No pending data'}</span>`;
- return `${head('Pending Approval','Approve each report separately by ROM. BOD is the morning commitment; EOD and Calling are end-of-day reports.')}${filters()}<div class="kpi-grid">${kpiCard('ROMs in Scope',groups.size,'Mapped to your division','blue')}${kpiCard('Pending Items',totalPending,'Awaiting your approval','amber')}${kpiCard('BOD Pending',[...groups.values()].reduce((a,g)=>a+g.bod.length,0),'Morning commitments','cyan')}${kpiCard('EOD / Calling Pending',[...groups.values()].reduce((a,g)=>a+g.eod.length+g.calling.length,0),'End-of-day submissions','green')}</div><div class="notice"><b>Workflow:</b> Approve BOD, EOD, Calling and Monthly ELA Base independently. Approving one report never approves the others. Approved records are locked and published to relevant dashboards; corrections require ZOH approval.</div><div class="tablewrap"><table><thead><tr><th>ROM</th><th>Branches</th><th>BOD · Morning</th><th>EOD · End of day</th><th>Calling · End of day</th><th>ELA Base · Monthly</th><th>Branch details</th></tr></thead><tbody>${[...groups.values()].map(g=>{const staff=roms.find(r=>String(r.empCode)===g.rom);const name=staff?.displayName||staff?.name||g.rom;return `<tr><td><b>${esc(name)}</b><div class="muted">ROM ${esc(g.rom)}</div></td><td>${g.branches.length}</td><td><span class="pill">${g.bod.length} pending</span><br>${action(g,'bod',g.bod.length,'BOD')}</td><td><span class="pill">${g.eod.length} pending</span><br>${action(g,'eod',g.eod.length,'EOD')}</td><td><span class="pill">${g.calling.length} pending</span><br>${action(g,'calling',g.calling.length,'Calling')}</td><td><span class="pill">${g.bases.length} pending</span><br>${action(g,'bases',g.bases.length,'ELA Base')}</td><td><button class="btn outline small" onclick="viewRomBranches('${esc(g.rom)}')">View branches</button></td></tr>`}).join('')||'<tr><td colspan="7">No ROMs or branches mapped to your division.</td></tr>'}</tbody></table></div><div id="romBranchDetail" class="card" style="display:none;margin-top:16px"></div>`;
+ reportRows.forEach(x=>{const branch=bs.find(b=>String(b.branchCode)===String(x.branchCode));const code=String(x.romCode||x.assignedRomEmpCode||branch?.romCode||branch?.assignedRomEmpCode||branch?.romEmpCode||branchRomCode(branch)||'').trim();const g=addRom(code);if(g&&branch&&!g.branches.some(y=>String(y.branchCode)===String(branch.branchCode)))g.branches.push(branch)});
+ const rowsFor=(type,g)=>{const rows=type==='bases'?bases:type==='bod'?bod:type==='eod'?eod:calling;return rows.filter(x=>type==='bases'?monthKey(x.month)===month:x.date===date).filter(x=>{
+   const branch=g.branches.some(b=>String(b.branchCode)===String(x.branchCode));
+   const identity=romIdentityValues(g.rom);
+   const metadata=[x.romCode,x.assignedRomEmpCode,x.romEmpCode,x.updatedByRegion,x.regionId,x.regionCode,x.romName].some(v=>v!==undefined&&v!==null&&identity.keys.has(normScope(v)));
+   return branch||metadata;
+  })};
+ const statusFor=(rows)=>{
+   if(!rows.length)return {key:'not-submitted',label:'Not submitted',detail:'No report found for this period',cls:'status-missing'};
+   const states=rows.map(x=>String(x.submissionStatus||x.status||'DRAFT').toUpperCase());
+   const approved=states.filter(x=>['APPROVED_DOM','APPROVED','APPROVED / LOCKED'].includes(x)).length;
+   const pending=states.filter(x=>['PENDING_DOM','SUBMITTED','PENDING_APPROVAL','PENDING APPROVAL'].includes(x)).length;
+   const returned=states.filter(x=>['RETURNED','REJECTED','NEEDS_CORRECTION'].includes(x)).length;
+   if(returned)return {key:'returned',label:'Returned',detail:`${returned} record(s) need correction`,cls:'status-returned'};
+   if(pending)return {key:'pending',label:'Awaiting approval',detail:`${pending} submitted record(s) need review`,cls:'status-pending'};
+   if(approved===rows.length)return {key:'approved',label:'Approved',detail:`${rows.length} approved record(s)`,cls:'status-approved'};
+   if(approved>0)return {key:'partial',label:'Partially submitted',detail:`${approved} approved; ${rows.length-approved} record(s) not approved`,cls:'status-partial'};
+   return {key:'draft',label:'Submitted / not finalized',detail:'Check submission status',cls:'status-partial'};
+ };
+ const types=[['bod','BOD · Morning'],['eod','EOD · End of day'],['calling','Calling · End of day'],['bases','ELA Base · Monthly']];
+ const records=[...groups.values()].map(g=>{const reportStatus={};for(const [type] of types)reportStatus[type]=statusFor(rowsFor(type,g));g._reportStatus=reportStatus;g._pendingByType={};for(const [type] of types)g._pendingByType[type]=rowsFor(type,g).filter(x=>String(x.submissionStatus||'').toUpperCase()==='PENDING_DOM');return g});
+ const allStatuses=types.flatMap(([type])=>records.map(g=>g._reportStatus[type]));
+ const count=(key,type)=>records.reduce((sum,g)=>sum+(type?Number(g._reportStatus[type].key===key):types.reduce((n,[t])=>n+Number(g._reportStatus[t].key===key),0)),0);
+ const pendingRows=records.reduce((sum,g)=>sum+types.reduce((n,[type])=>n+g._pendingByType[type].length,0),0);
+ const action=(g,type)=>{const count=g._pendingByType[type].length;return count?`<button class="btn primary small" onclick="approveRomSubmissions('${esc(g.rom)}','${type}')">Review ${type==='bases'?'ELA Base':type.toUpperCase()} (${count})</button>`:`<span class="status-chip ${g._reportStatus[type].cls}">${esc(g._reportStatus[type].label)}</span><div class="status-help">${esc(g._reportStatus[type].detail)}</div>`};
+ const summary=(label,value,detail,cls)=>`<div class="kpi-card ${cls||''}"><div class="kpi-label">${esc(label)}</div><div class="kpi-value">${esc(value)}</div><div class="kpi-foot">${esc(detail)}</div></div>`;
+ return `${head('Pending Approval','Track submission, approval, and missing reports separately. BOD is the morning commitment; EOD and Calling are end-of-day reports.')}${filters()}<style>
+ .approval-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}.approval-summary .kpi-card{background:var(--card,#fff);border:1px solid var(--line,#e1e6ee);border-radius:16px;padding:16px;min-width:0}.approval-summary .kpi-label{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,#667085)}.approval-summary .kpi-value{font-size:30px;font-weight:850;margin:6px 0;color:var(--ink,#202938)}.approval-summary .kpi-foot{font-size:12px;color:var(--muted,#667085)}.status-chip{display:inline-block;border-radius:999px;padding:5px 10px;font-weight:750;font-size:12px;border:1px solid transparent;white-space:nowrap}.status-help{font-size:12px;line-height:1.4;color:var(--muted,#667085);margin-top:5px;max-width:220px}.status-approved{background:#e5f7ed;color:#176b43;border-color:#bce7ce}.status-pending{background:#fff3d6;color:#885600;border-color:#f0d99a}.status-missing{background:#f1f3f6;color:#4b5563;border-color:#d9dee7}.status-returned{background:#ffe7e7;color:#9f2424;border-color:#f4bebe}.status-partial{background:#eee8ff;color:#5d3b91;border-color:#d7c8f3}.approval-table td{vertical-align:top}.approval-legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.approval-legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted,#667085)}@media(max-width:800px){.approval-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.approval-table{min-width:860px}}
+ </style><div class="approval-summary">${summary('ROMs in scope',records.length,'Mapped to your division','')}${summary('Awaiting approval',pendingRows,'Submitted records requiring your decision','')}${summary('Not submitted',count('not-submitted'),'ROM/report combinations with no records','')}${summary('Returned for correction',count('returned'),'ROM/report combinations requiring resubmission','')}</div><div class="notice"><b>How to read this page:</b> <b>Not submitted</b> means no records were found for the selected date/month. <b>Awaiting approval</b> means a submission is waiting for DOM review. <b>Approved</b> means all found records for that report are approved. <b>Returned</b> means the ROM must correct and resubmit. EOD and Calling are tracked independently from BOD.</div><div class="approval-legend"><span><i class="status-chip status-missing">Not submitted</i></span><span><i class="status-chip status-pending">Awaiting approval</i></span><span><i class="status-chip status-approved">Approved</i></span><span><i class="status-chip status-returned">Returned</i></span><span><i class="status-chip status-partial">Partially submitted</i></span></div><div class="tablewrap"><table class="approval-table"><thead><tr><th>ROM</th><th>Branches</th><th>BOD · Morning</th><th>EOD · End of day</th><th>Calling · End of day</th><th>ELA Base · Monthly</th><th>Branch details</th></tr></thead><tbody>${records.map(g=>{const staff=roms.find(r=>String(r.empCode)===g.rom||normScope(r.name)===normScope(g.rom));const name=staff?.displayName||staff?.name||g.rom;return `<tr><td><b>${esc(name)}</b><div class="muted">ROM ${esc(g.rom)}</div></td><td>${g.branches.length}</td><td>${action(g,'bod')}</td><td>${action(g,'eod')}</td><td>${action(g,'calling')}</td><td>${action(g,'bases')}</td><td><button class="btn outline small" onclick="viewRomBranches('${esc(g.rom)}')">View branches</button></td></tr>`}).join('')||'<tr><td colspan="7">No ROMs or branches are mapped to your division. Check Organization Mapping.</td></tr>'}</tbody></table></div><div id="romBranchDetail" class="card" style="display:none;margin-top:16px"></div>`;
 }
 async function approveRomSubmissions(romCode,reportType){
  if(!roleIs('DOM'))return alert('Only DOM can approve ROM submissions.');
@@ -1842,7 +1901,7 @@ auth.onAuthStateChanged(fu=>{if(fu)afterAuth(fu);else{stopRealtime();user=null;p
 .top{background:linear-gradient(110deg,#0d2f5f,#1769aa)!important}
 .hub-shortcut .hub-icon{background:#e8f1fc!important;color:#1769aa!important}
 .mobile-bottom-nav button.active{background:#e8f1fc!important;color:#145ca8!important}
-.sync-status{display:none!important}
+.sync-status{display:inline-flex!important;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff!important;border:1px solid rgba(255,255,255,.2)}
 .sync-dot{width:7px;height:7px;border-radius:50%;background:#fbbf24;display:inline-block;flex:0 0 7px}
 .sync-status.is-live .sync-dot{display:none!important}
 .sync-status.is-stale .sync-dot{background:#fbbf24}
@@ -2100,7 +2159,7 @@ img,svg,canvas{max-width:100%}
   .top>div:last-child>.small{font-size:10px!important;line-height:1.3!important}
   .top-tools{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;gap:7px!important;margin-top:0!important}
   .top-tools #globalSearch{flex:1 1 auto!important;width:100%!important;min-width:0!important;min-height:38px!important;grid-column:auto!important;grid-row:auto!important;padding:8px 10px!important;font-size:13px!important}
-  .top-tools .sync-status{display:none!important}
+  .top-tools .sync-status{display:inline-flex!important;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff!important;border:1px solid rgba(255,255,255,.2)}
   .top-tools .notification-button{flex:0 0 38px!important;width:38px!important;min-width:38px!important;height:38px!important;padding:5px!important}
   .top-tools .btn[onclick="signOut()"]{display:none!important}
   .main{padding:11px!important}
@@ -2122,7 +2181,7 @@ img,svg,canvas{max-width:100%}
   .brand p{font-size:9px!important}
   .top>div:last-child>.small{font-size:9px!important}
   .top-tools{gap:5px!important}
-  .top-tools .sync-status{display:none!important}
+  .top-tools .sync-status{display:inline-flex!important;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff!important;border:1px solid rgba(255,255,255,.2)}
   .top-tools .notification-button{width:35px!important;min-width:35px!important;flex-basis:35px!important;height:35px!important}
   .main{padding:9px!important}
   .head{margin-bottom:10px!important}
@@ -2256,6 +2315,191 @@ td[id^="allHint_"],
   }
   const start=()=>{addButton();const root=document.getElementById('root');if(root&&'MutationObserver'in window)new MutationObserver(()=>addButton()).observe(root,{childList:true,subtree:true});};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
+</script>
+
+
+<script>
+// TN HUB usability helpers: consistent sync timestamp and accessible status labels.
+(function(){
+ const markSync=()=>{window.__tnHubLastSyncAt=Date.now();document.querySelectorAll('[data-sync-state]').forEach(el=>{el.textContent='Live data · updated '+new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});el.classList.remove('sync-stale');});};
+ window.tnHubMarkSynced=markSync;
+ window.addEventListener('online',()=>document.querySelectorAll('[data-sync-state]').forEach(el=>el.textContent='Connection restored · syncing…'));
+ window.addEventListener('offline',()=>document.querySelectorAll('[data-sync-state]').forEach(el=>{el.textContent='Offline · showing last loaded data';el.classList.add('sync-stale');}));
+ setInterval(()=>{if(!navigator.onLine)return;const last=window.__tnHubLastSyncAt;if(last&&Date.now()-last>120000)document.querySelectorAll('[data-sync-state]').forEach(el=>{el.textContent='Refresh may be delayed · last update '+new Date(last).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});el.classList.add('sync-stale');});},15000);
+})();
+</script>
+<style>.sync-stale{color:#9f2424!important;background:#fff0f0!important;border-color:#f3c2c2!important}.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #60a5fa;outline-offset:2px}button[disabled]{opacity:.55;cursor:not-allowed}</style>
+
+<script id="tnhub-enterprise-enhancements-v1">
+(function(){
+ 'use strict';
+ const css=`
+ #tnhub-enterprise-strip{margin:12px 0 18px;padding:14px 16px;border:1px solid rgba(125,151,190,.3);border-radius:18px;background:linear-gradient(120deg,rgba(255,255,255,.84),rgba(237,244,255,.74));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 28px rgba(20,45,85,.08);color:var(--ink,#172b43)}
+ #tnhub-enterprise-strip .teh-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+ #tnhub-enterprise-strip .teh-title{font-weight:800;letter-spacing:.01em}#tnhub-enterprise-strip .teh-meta{font-size:12px;color:var(--muted,#63758b)}
+ #tnhub-enterprise-strip .teh-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+ #tnhub-enterprise-strip .teh-kpi{padding:10px 12px;border:1px solid rgba(125,151,190,.2);border-radius:13px;background:rgba(255,255,255,.65);min-width:0}
+ #tnhub-enterprise-strip .teh-kpi b{display:block;font-size:20px;line-height:1.3}#tnhub-enterprise-strip .teh-kpi span{font-size:12px;color:var(--muted,#63758b)}
+ #tnhub-enterprise-strip .teh-alerts{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.teh-chip{font-size:12px;font-weight:750;padding:5px 9px;border-radius:999px;background:#fff;border:1px solid var(--line,#dce5ef)}.teh-chip.warn{color:#945600;background:#fff7e6;border-color:#f3d38c}.teh-chip.bad{color:#a32323;background:#fff0f0;border-color:#f1b6b6}.teh-chip.good{color:#176747;background:#eaf8f0;border-color:#b7e4ca}
+ #tnhub-enterprise-strip .teh-actions{display:flex;gap:7px;flex-wrap:wrap}#tnhub-enterprise-strip button{border:1px solid rgba(70,100,145,.25);border-radius:10px;padding:7px 10px;background:rgba(255,255,255,.8);color:inherit;font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+ #tnhub-enterprise-strip button:hover{background:#fff;transform:translateY(-1px)}
+ #tnhub-health-modal{position:fixed;inset:0;z-index:99999;background:rgba(8,20,40,.46);display:none;align-items:center;justify-content:center;padding:16px}
+ #tnhub-health-modal .teh-modal{width:min(760px,100%);max-height:85vh;overflow:auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 25px 90px rgba(0,0,0,.25);color:#172b43}
+ #tnhub-health-modal h2{margin-top:0}#tnhub-health-modal .teh-close{float:right;border:0;border-radius:9px;padding:7px 10px;background:#edf2f8;cursor:pointer}
+ #tnhub-health-modal .teh-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #e5ebf2;flex-wrap:wrap}
+ .tnhub-validation-hint{font-size:12px;color:#63758b;margin-top:4px}
+ #tnhub-enterprise-strip .teh-status-review{margin-top:12px;border:1px solid #dfe7f1;border-radius:12px;background:#fff;overflow:hidden}
+ #tnhub-enterprise-strip .teh-status-review summary{cursor:pointer;padding:12px 14px;font-size:12px;font-weight:800;color:#244365}
+ #tnhub-enterprise-strip .teh-table-wrap{overflow:auto;max-height:360px;border-top:1px solid #e5ebf2}
+ #tnhub-enterprise-strip .teh-table-wrap table{width:100%;min-width:720px;border-collapse:collapse}
+ #tnhub-enterprise-strip .teh-table-wrap th,#tnhub-enterprise-strip .teh-table-wrap td{padding:9px 11px;border-bottom:1px solid #edf1f6;text-align:left;font-size:11px;white-space:normal}
+ #tnhub-enterprise-strip .teh-table-wrap th{position:sticky;top:0;background:#f3f7fc}
+ #tnhub-enterprise-strip .teh-status{display:inline-block;border-radius:7px;padding:4px 6px;background:#eef2f7;color:#475569;font-weight:750}
+ #tnhub-enterprise-strip .teh-approved{background:#dcfce7;color:#166534}
+ #tnhub-enterprise-strip .teh-awaiting_approval{background:#fef3c7;color:#92400e}
+ #tnhub-enterprise-strip .teh-not_submitted,#tnhub-enterprise-strip .teh-incomplete{background:#fee2e2;color:#991b1b}
+ #tnhub-enterprise-strip .teh-action_required,#tnhub-enterprise-strip .teh-status_mismatch,#tnhub-enterprise-strip .teh-status_not_recorded{background:#ffedd5;color:#9a3412}
+ #tnhub-enterprise-strip .teh-submitted{background:#dbeafe;color:#1d4ed8}
+ #tnhub-enterprise-strip .teh-table-wrap small{display:block;color:#64748b;margin-top:3px}
+ #tnhub-enterprise-strip .teh-review-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+ #tnhub-enterprise-strip .teh-review-toolbar label{display:flex;align-items:center;gap:8px;font-weight:700;color:#183653}
+ #tnhub-enterprise-strip .teh-review-toolbar select{border:1px solid #cbd8e8;border-radius:9px;padding:8px 12px;background:#fff;color:#17324d;font:inherit}
+ #tnhub-enterprise-strip .teh-view-data{border:1px solid #bfd3e8;border-radius:9px;padding:8px 11px;background:#eff6ff;color:#174a83;font-weight:700;cursor:pointer;white-space:nowrap}
+ #tnhub-enterprise-strip .teh-detail-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 8px}
+ #tnhub-enterprise-strip .teh-detail-head h3{font-size:16px;margin:0;color:#17324d}
+ #tnhub-enterprise-strip .teh-table-wrap{overflow:auto;max-width:100%}
+ #tnhub-enterprise-strip .teh-table-wrap table{min-width:680px}
+
+ @media(max-width:700px){#tnhub-enterprise-strip .teh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#tnhub-enterprise-strip{padding:12px}}
+ @media(prefers-reduced-transparency:reduce){#tnhub-enterprise-strip{backdrop-filter:none;-webkit-backdrop-filter:none;background:#f5f8fd}}
+ `;
+ const style=document.createElement('style');style.textContent=css;document.head.appendChild(style);
+ function fmtTime(ms){if(!ms)return 'Waiting for first sync';try{return new Date(ms).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch(_){return '—'}}
+ function stamp(v){if(!v)return 0;if(typeof v.toMillis==='function')return v.toMillis();if(typeof v==='number')return v;const d=new Date(v);return Number.isFinite(d.getTime())?d.getTime():0}
+ function safeRows(a){return Array.isArray(a)?a:[]}
+ function todayStr(){try{return typeof today==='function'?today():new Date().toLocaleDateString('en-CA')}catch(_){return new Date().toISOString().slice(0,10)}}
+ function currentScope(){try{return typeof scopeBranches==='function'?scopeBranches():[]}catch(_){return safeRows(window.branches)}}
+ function rowFor(list,b,day,metric){try{return typeof todayRow==='function'?todayRow(list,b.branchCode,day,metric):safeRows(list).find(x=>String(x.branchCode)===String(b.branchCode)&&x.date===day&&x.metric===metric)}catch(_){return null}}
+ function normReportStatus(row){
+  const raw=String(row?.submissionStatus||row?.status||'').trim().toUpperCase().replace(/[\s-]+/g,'_');
+  if(/APPROV/.test(raw)||raw==='VERIFIED'||raw==='COMPLETED'||raw==='ACCEPTED')return 'APPROVED';
+  if(/REJECT|RETURN|CORRECTION/.test(raw))return 'ACTION_REQUIRED';
+  if(/PENDING_DOM|AWAITING|PENDING|SUBMITTED/.test(raw))return 'AWAITING_APPROVAL';
+  return raw?'SUBMITTED':'STATUS_NOT_RECORDED';
+ }
+ function groupReportState(list,b,day,metricList,isCalling,reportType){
+  const rows=isCalling?safeRows(list).filter(x=>String(x.branchCode)===String(b.branchCode)&&String(x.date)===String(day)):(metricList||[]).map(m=>rowFor(list,b,day,m)).filter(Boolean);
+  const expected=isCalling?1:(metricList||[]).length;
+  if(!rows.length)return {state:'NOT_SUBMITTED',label:'Not submitted',rows,missing:expected};
+  if(rows.length<expected)return {state:'INCOMPLETE',label:`Incomplete (${rows.length}/${expected})`,rows,missing:expected-rows.length};
+  // BOD approval is stored separately in commitmentReviews, not reliably on each bodCommitments row.
+  if(reportType==='BOD'){
+   const review=safeRows(window.commitmentReviews).find(x=>String(x.branchCode)===String(b.branchCode)&&String(x.date)===String(day));
+   const reviewStatus=String(review?.status||review?.submissionStatus||'').trim().toUpperCase().replace(/[\s-]+/g,'_');
+   // Honour the approval status stored on the BOD commitment rows as well as the separate review record.
+   // Some approved batches have APPROVED_DOM on every metric row but no commitmentReviews document.
+   const bodStatuses=rows.map(normReportStatus);
+   const rowsApproved=bodStatuses.length>0&&bodStatuses.every(x=>x==='APPROVED');
+   if(['VERIFIED','APPROVED','APPROVED_DOM','APPROVED_LOCKED','DOM_APPROVED'].includes(reviewStatus)||rowsApproved)return {state:'APPROVED',label:'Approved by DOM',rows,missing:0,review};
+   if(['RETURNED','REJECTED','CORRECTION_REQUIRED'].includes(reviewStatus)||bodStatuses.some(x=>x==='ACTION_REQUIRED'))return {state:'ACTION_REQUIRED',label:'Returned by DOM',rows,missing:0,review};
+   if(reviewStatus)return {state:'AWAITING_APPROVAL',label:`DOM review: ${reviewStatus.replace(/_/g,' ')}`,rows,missing:0,review};
+   return {state:'AWAITING_APPROVAL',label:'Submitted · awaiting DOM verification',rows,missing:0,review:null};
+  }
+  const statuses=rows.map(normReportStatus);
+  const action=statuses.some(x=>x==='ACTION_REQUIRED');
+  const approved=statuses.every(x=>x==='APPROVED');
+  const awaiting=statuses.some(x=>x==='AWAITING_APPROVAL');
+  const missingFields=rows.some(x=>!String(x.submissionStatus||x.status||'').trim());
+  if(action)return {state:'ACTION_REQUIRED',label:'Correction / review required',rows,missing:0};
+  if(approved)return {state:'APPROVED',label:'Approved',rows,missing:0};
+  if(awaiting)return {state:'AWAITING_APPROVAL',label:'Submitted · awaiting approval',rows,missing:0};
+  if(missingFields)return {state:'STATUS_NOT_RECORDED',label:'Submitted · status not recorded',rows,missing:0};
+  if(statuses.some(x=>x!==statuses[0]))return {state:'STATUS_MISMATCH',label:'Status mismatch',rows,missing:0};
+  return {state:'SUBMITTED',label:'Submitted · approval unconfirmed',rows,missing:0};
+ }
+ function getCounts(){
+  const bs=currentScope(),day=todayStr(),metrics=safeRows(window.METRICS).length?window.METRICS:['ELA','Gold Loan','FD','Insurance'];
+  const lists={BOD:safeRows(window.bod),EOD:safeRows(window.eod),Calling:safeRows(window.calling)};
+  const complete={BOD:0,EOD:0,Calling:0},pending={BOD:0,EOD:0,Calling:0},missing={BOD:0,EOD:0,Calling:0},action={BOD:0,EOD:0,Calling:0},rows=[],allRows=[];
+  for(const b of bs){
+   const states={};
+   for(const key of ['BOD','EOD','Calling']){
+    const st=groupReportState(lists[key],b,day,metrics,key==='Calling',key);states[key]=st;
+    if(st.state==='APPROVED')complete[key]++;
+    if(st.state==='AWAITING_APPROVAL'||st.state==='SUBMITTED')pending[key]++;
+    if(st.state==='NOT_SUBMITTED'||st.state==='INCOMPLETE')missing[key]++;
+    if(st.state==='ACTION_REQUIRED'||st.state==='STATUS_MISMATCH'||st.state==='STATUS_NOT_RECORDED')action[key]++;
+   }
+   const item={branch:b,states};allRows.push(item);if(Object.values(states).some(x=>x.state!=='APPROVED'))rows.push(item);
+  }
+  return {branches:bs.length,complete,pending,missing,action,metrics,day,rows,allRows};
+ }
+ function consistencyGroupInfo(b,mode){
+  if(mode==='dom'){
+   const id=String(b.divisionId||b.domCode||b.domId||'Unassigned DOM');
+   return {key:id,label:String(b.domName||b.divisionName||b.domDisplayName||id),sub:id};
+  }
+  const rom=branchRomCode(b),dom=String(b.divisionId||b.domCode||b.domId||'Unassigned DOM');
+  return {key:dom+'::'+rom,label:String(b.romName||b.regionName||b.regionDisplayName||rom),sub:'DOM: '+String(b.domName||b.divisionName||dom)+' · ROM: '+rom};
+ }
+ function stateBadge(st){return `<span class="teh-status teh-${st.state.toLowerCase()}">${esc(st.label)}</span>`}
+ // Keep the user's review selection independent of DOM nodes, because the control centre refreshes periodically.
+ let consistencyReviewMode='dom', consistencyDetailKey=null;
+ function renderConsistencyReview(mode='dom'){
+  consistencyReviewMode=mode==='rom'?'rom':'dom'; mode=consistencyReviewMode;
+  const c=getCounts(),all=c.allRows||[],groups=new Map();
+  all.forEach(item=>{const info=consistencyGroupInfo(item.branch,mode);if(!groups.has(info.key))groups.set(info.key,{...info,items:[]});groups.get(info.key).items.push(item)});
+  const rows=[...groups.values()].sort((a,b)=>a.label.localeCompare(b.label));
+  const summary=items=>['BOD','EOD','Calling'].map(k=>`${items.filter(x=>x.states[k].state==='APPROVED').length}/${items.length} ${k}`).join(' · ');
+  const target=document.getElementById('teh-consistency-content');if(!target)return;
+  target.innerHTML=`<div class="teh-review-toolbar"><label>Group by <select id="teh-review-mode" onchange="window.tnHubRenderConsistency(this.value)"><option value="dom" ${mode==='dom'?'selected':''}>DOM wise</option><option value="rom" ${mode==='rom'?'selected':''}>ROM wise</option></select></label><span>${rows.length} ${mode==='dom'?'DOM':'ROM'} groups · ${all.length} branches</span></div><div class="teh-table-wrap"><table><thead><tr><th>${mode==='dom'?'DOM / Division':'ROM / Region'}</th><th>Branches</th><th>Reporting approval summary</th><th>Needs attention</th><th>Data</th></tr></thead><tbody>${rows.map(g=>{const attention=g.items.filter(x=>Object.values(x.states).some(st=>st.state!=='APPROVED')).length;return `<tr><td><b>${esc(g.label)}</b><small>${esc(g.sub)}</small></td><td>${g.items.length}</td><td>${esc(summary(g.items))}</td><td>${attention?`<span class="teh-chip warn">${attention} branches</span>`:'<span class="teh-chip good">Clear</span>'}</td><td><button type="button" class="teh-view-data" onclick="window.tnHubViewConsistencyData('${encodeURIComponent(mode)}','${encodeURIComponent(g.key)}')">View data →</button></td></tr>`}).join('')||'<tr><td colspan="5">No branches are available in your current scope.</td></tr>'}</tbody></table></div><div id="teh-consistency-detail"></div>`;
+ }
+ window.tnHubRenderConsistency=function(mode){consistencyReviewMode=mode==='rom'?'rom':'dom';consistencyDetailKey=null;renderConsistencyReview(consistencyReviewMode)};
+ window.tnHubViewConsistencyData=function(modeEncoded,keyEncoded){
+  const mode=decodeURIComponent(modeEncoded),key=decodeURIComponent(keyEncoded); consistencyReviewMode=mode; consistencyDetailKey=key; const c=getCounts(),items=(c.allRows||[]).filter(x=>consistencyGroupInfo(x.branch,mode).key===key),box=document.getElementById('teh-consistency-detail');if(!box)return;
+  box.innerHTML=`<div class="teh-detail-head"><h3>${esc(consistencyGroupInfo(items[0]?.branch||{},mode).label||key)} — branch report details</h3><button type="button" class="teh-view-data" onclick="window.tnHubCloseConsistencyData()">Close ✕</button></div><div class="teh-table-wrap"><table><thead><tr><th>Branch</th><th>Code</th><th>BOD</th><th>EOD</th><th>Calling</th><th>Finding</th></tr></thead><tbody>${items.map(x=>{const b=x.branch,findings=Object.values(x.states).filter(st=>st.state!=='APPROVED').map(st=>st.label);return `<tr><td>${esc(b.branchName||b.name||b.branchCode||'Branch')}</td><td>${esc(b.branchCode||'—')}</td>${['BOD','EOD','Calling'].map(k=>`<td>${stateBadge(x.states[k])}</td>`).join('')}<td>${esc(findings.join(' · ')||'No discrepancy detected')}</td></tr>`}).join('')||'<tr><td colspan="6">No data found.</td></tr>'}</tbody></table></div><p class="tnhub-validation-hint">Read-only view of report records currently loaded for the selected date. Missing reports are shown as Not submitted.</p>`;
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+ };
+ window.tnHubCloseConsistencyData=function(){consistencyDetailKey=null;const box=document.getElementById('teh-consistency-detail');if(box)box.innerHTML=''};
+ function makeStrip(){if(!window.user||!document.getElementById('root'))return;const root=document.getElementById('root');const host=root.querySelector('.main')||root.querySelector('main')||root;let strip=document.getElementById('tnhub-enterprise-strip');if(!strip){strip=document.createElement('section');strip.id='tnhub-enterprise-strip';const anchor=host.firstElementChild;if(anchor)host.insertBefore(strip,anchor);else host.appendChild(strip)}
+  const c=getCounts(),sync=window.__tnHubSync||{},age=sync.lastUpdate?Math.max(0,Math.floor((Date.now()-sync.lastUpdate)/1000)):null,online=navigator.onLine;let syncText=!online?'Offline':sync.errors?'Sync needs attention':age===null?'Connecting to Firestore':age<5?'Live · just updated':age<=60?`Live · ${age}s ago`:'Last update is older than 60s';
+  const allPending=c.pending.BOD+c.pending.EOD+c.pending.Calling,allMissing=c.missing.BOD+c.missing.EOD+c.missing.Calling;
+  const chips=[];if(!online||sync.errors)chips.push(`<span class="teh-chip bad">${!online?'Offline — changes may not sync':'Firestore listener error'}</span>`);if(allPending)chips.push(`<span class="teh-chip warn">${allPending} report groups awaiting approval / verification</span>`);if(allMissing)chips.push(`<span class="teh-chip warn">${allMissing} report groups incomplete for today</span>`);if(!allPending&&!allMissing&&c.branches)chips.push('<span class="teh-chip good">All scoped report groups complete</span>');
+  // Preserve the open review and any branch-detail panel while the control centre refreshes.
+  // Keep the exact review DOM node alive across the 5-second status refresh.
+  // Replacing this node resets nested View Data UI and can make it appear to close.
+  const previousReview=strip.querySelector('.teh-status-review');
+  const previousReviewOpen=!!previousReview?.open;
+  const previousReviewMode=strip.querySelector('#teh-review-mode')?.value||consistencyReviewMode||'dom';
+  const previousDetailKey=consistencyDetailKey;
+  if(previousReview) previousReview.remove();
+  strip.innerHTML=`<div class="teh-head"><div><div class="teh-title">Reporting Control Centre</div><div class="teh-meta">${esc(c.day)} · ${c.branches} branches in your current scope · ${esc(syncText)}${sync.lastUpdate?' · '+esc(fmtTime(sync.lastUpdate)):''}</div></div><div class="teh-actions"><button type="button" onclick="window.dispatchEvent(new Event('tnhub:force-sync'))">↻ Sync now</button><button type="button" onclick="window.tnHubShowHealth()">System health</button><button type="button" onclick="window.tnHubExportSnapshot()">Export visible data</button></div></div><div class="teh-grid"><div class="teh-kpi"><b>${c.complete.BOD}/${c.branches}</b><span>BOD approved</span></div><div class="teh-kpi"><b>${c.complete.EOD}/${c.branches}</b><span>EOD approved</span></div><div class="teh-kpi"><b>${c.complete.Calling}/${c.branches}</b><span>Calling approved</span></div><div class="teh-kpi"><b>${allPending}</b><span>Awaiting approval / unconfirmed</span></div></div><div class="teh-alerts">${chips.join('')||'<span class="teh-chip">No critical reporting alerts detected</span>'}</div>`;
+  if(previousReview){
+   strip.appendChild(previousReview);
+   previousReview.open=previousReviewOpen;
+   if(previousReviewOpen){
+    consistencyReviewMode=previousReviewMode;
+    renderConsistencyReview(previousReviewMode);
+    if(previousDetailKey!==null)window.tnHubViewConsistencyData(encodeURIComponent(previousReviewMode),encodeURIComponent(previousDetailKey));
+   }
+  } else {
+   strip.insertAdjacentHTML('beforeend',`<details class="teh-status-review"><summary>Reporting status consistency review · DOM wise / ROM wise</summary><div id="teh-consistency-content"></div><p class="tnhub-validation-hint">BOD approval is read from commitmentReviews (VERIFIED/RETURNED); EOD and Calling status are read from their report records. Use “View data” to inspect branch-level statuses. This is a read-only diagnostic and does not modify Firestore.</p></details>`);
+  }
+ }
+ window.tnHubShowHealth=function(){const sync=window.__tnHubSync||{},c=getCounts();let modal=document.getElementById('tnhub-health-modal');if(!modal){modal=document.createElement('div');modal.id='tnhub-health-modal';modal.innerHTML='<div class="teh-modal" role="dialog" aria-modal="true" aria-label="System health"><button class="teh-close" onclick="window.tnHubHideHealth()">Close ✕</button><h2>System health & reporting QA</h2><div id="tnhub-health-body"></div></div>';modal.addEventListener('click',e=>{if(e.target===modal)window.tnHubHideHealth()});document.body.appendChild(modal)}
+  const rows=[['Signed-in role',window.user?.role||'Not signed in'],['Employee code',window.user?.empCode||'—'],['Network',navigator.onLine?'Online':'Offline'],['Realtime listeners',sync.errors?'Errors reported':'No recent listener errors'],['Last data update',sync.lastUpdate?new Date(sync.lastUpdate).toLocaleString():'Not received yet'],['Last listener collection',sync.lastCollection||'—'],['Branches in scope',c.branches],['BOD DOM-verified',`${c.complete.BOD} / ${c.branches}`],['EOD complete',`${c.complete.EOD} / ${c.branches}`],['Calling complete',`${c.complete.Calling} / ${c.branches}`],['BOD awaiting DOM verification',c.pending.BOD],['EOD approval pending',c.pending.EOD],['Calling approval pending',c.pending.Calling],['Last sync error',sync.lastError||'None recorded']];
+  document.getElementById('tnhub-health-body').innerHTML=rows.map(([k,v])=>`<div class="teh-row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')+'<p class="tnhub-validation-hint">This panel checks the data currently loaded in this browser. It does not replace server-side Firestore Security Rules or a formal production audit.</p>';modal.style.display='flex';};
+ window.tnHubHideHealth=function(){const m=document.getElementById('tnhub-health-modal');if(m)m.style.display='none'};
+ window.tnHubExportSnapshot=function(){if(!window.user)return alert('Sign in before exporting.');const allowed=['branches','targets','bases','bod','eod','calling','correctionRequests','commitmentReviews','zohReviewRequests','cihReports','goldLoanWeekly'];const snap={exportedAt:new Date().toISOString(),exportedBy:{role:window.user.role,empCode:window.user.empCode},scope:'Current browser-loaded data only; not a full database backup',data:{}};for(const key of allowed){try{snap.data[key]=Array.isArray(window[key])?window[key]:[]}catch(_){snap.data[key]=[]}}const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`TN_State_HUB_visible_data_${todayStr()}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)};
+ // Keep the existing renderer and business workflows intact, then attach the control centre.
+ if(typeof window.render==='function'){const original=window.render;window.render=function(){const result=original.apply(this,arguments);try{makeStrip()}catch(e){console.warn('Reporting control centre render skipped',e)}return result}}
+ document.addEventListener('toggle',e=>{if(e.target?.matches?.('.teh-status-review')&&e.target.open)renderConsistencyReview(consistencyReviewMode||'dom')},true);
+ // In classic scripts, top-level let bindings are not window properties; expose read-only references for diagnostics/export.
+ function expose(){try{window.user=typeof user!=='undefined'?user:null;window.branches=typeof branches!=='undefined'?branches:[];window.bod=typeof bod!=='undefined'?bod:[];window.eod=typeof eod!=='undefined'?eod:[];window.calling=typeof calling!=='undefined'?calling:[];window.targets=typeof targets!=='undefined'?targets:[];window.bases=typeof bases!=='undefined'?bases:[];window.correctionRequests=typeof correctionRequests!=='undefined'?correctionRequests:[];window.commitmentReviews=typeof commitmentReviews!=='undefined'?commitmentReviews:[];window.zohReviewRequests=typeof zohReviewRequests!=='undefined'?zohReviewRequests:[];window.cihReports=typeof cihReports!=='undefined'?cihReports:[];window.goldLoanWeekly=typeof goldLoanWeekly!=='undefined'?goldLoanWeekly:[];window.METRICS=typeof METRICS!=='undefined'?METRICS:[]}catch(_){}}
+  const originalRender2=window.render;if(typeof originalRender2==='function')window.render=function(){expose();const r=originalRender2.apply(this,arguments);setTimeout(()=>{expose();try{makeStrip()}catch(_){}},0);return r};
+  setInterval(()=>{if(window.user)try{makeStrip()}catch(_){}},5000);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')window.tnHubHideHealth()});
 })();
 </script>
 
