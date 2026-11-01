@@ -583,15 +583,23 @@ function roleIs(...roles){return !!user&&roles.includes(user.role)}
 function allowedPages(){if(roleIs('ZOH'))return [['dashboard','▦ Tamil Nadu Overview'],['statePerformance','🏛 Tamil Nadu State Performance'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['alerts','⚠ Automatic Alerts'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ YTD Report'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],['reports','▤ Daily / Weekly / Monthly Reports'],['calling','☎ Calling & Disbursement Leaders'],['performance','▥ Target Not Met Review'],['reviews','✓ Commitment & Escalation Review'],['cih','💵 CIH Reconciliation'],['history','◷ Report History & Corrections'],['targets','🎯 Monthly Target Strategy'],['mapping','⌘ Organization Mapping'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']];let p=[['dashboard','▦ Business Overview'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['alerts','⚠ Automatic Alerts'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ YTD Report'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],...(roleIs('DOM')?[['approvals','✓ Pending Approval']]:[]),['bases','▤ Monthly ELA Base'],['bod','◎ BOD Commitments'],['eod','↗ EOD Business Report'],['calling','☎ Calling Report'],['glp','▤ Weekly Gold Loan GLP'],['cih','💵 CIH Reconciliation'],['performance','▥ Performance'],['reviews','✓ Commitment & Escalation Review'],['branchReview','▤ Branch Full History'],['history','◷ History & Corrections']];if(roleIs('SYSTEM_ADMIN'))p.push(['users','♙ User Profiles'],['reset','⚠ Reset Trial Data'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']);return p}
 function nav(){const icons={dashboard:'◈',statePerformance:'🏛',intelligence:'◉',actionPlan:'✦',alerts:'⚠',analytics3:'📊',zohDashboard:'◈',domDashboard:'▦',romDashboard:'⌘',reports:'▤',calling:'◉',performance:'↗',reviews:'✓',cih:'◫',history:'◷',targets:'◎',mapping:'⌘',users:'♙',settings:'⚙'};return allowedPages().map(([k,n])=>`<button class="nav ${page===k?'active':''}" onclick="go('${k}')"><span class="nav-icon" aria-hidden="true">${icons[k]||'◆'}</span><span class="nav-text">${n}</span><span class="nav-arrow" aria-hidden="true">›</span></button>`).join('')}
 function go(p,fromPop=false){if(roleIs('ZOH')&&['bases','bod','eod','users'].includes(p))p='dashboard';if(p==='branchReview'&&selectedBranch==='ALL'){alert('Select a branch first from the dashboard or Target Not Met Review.');return}if(!['businessReportHub','tasksHub','appsHub','profileHub','dashboard','statePerformance','intelligence','actionPlan','alerts','analytics3','branchYtd','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests'].includes(p)){console.warn('Unknown page:',p);return}
- // Preserve only the intended hub parent, never a stack of every visited feature.
- if(p==='dashboard'){appBackParent='dashboard'}else if(p==='appsHub'){appBackParent='dashboard'}else if(page==='appsHub'&&!['tasksHub','profileHub','businessReportHub'].includes(p)){appBackParent='appsHub'}try{sessionStorage.setItem('tnhub.appBackParent',appBackParent)}catch(e){}
+ // Logical navigation: feature pages return to Apps; Apps returns to Dashboard.
+ // This remains predictable even when a feature is opened from search, a shortcut, or a report link.
+ if(p==='dashboard'||p==='appsHub') appBackParent='dashboard';
+ else if(['tasksHub','profileHub','businessReportHub'].includes(p)) appBackParent=page==='appsHub'?'appsHub':'dashboard';
+ else appBackParent='appsHub';
+ try{sessionStorage.setItem('tnhub.appBackParent',appBackParent)}catch(e){}
  if(['dashboard','domDashboard','romDashboard'].includes(p)){selectedDivision='ALL';selectedRom='ALL';selectedBranch='ALL';dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom'}page=p;document.querySelector('.side')?.classList.remove('open');render();window.scrollTo({top:0,behavior:'instant'});saveCurrentView();installBackGuard()}
 function installBackGuard(){if(backGuardInstalled)return;try{history.pushState({tnHubGuard:true},'',location.href);backGuardInstalled=true}catch(e){}}
 function saveCurrentView(){try{sessionStorage.setItem('tnhub.currentPage',String(page||'dashboard'));sessionStorage.setItem('tnhub.selectedBranch',String(typeof selectedBranch!=='undefined'?selectedBranch:'ALL'));sessionStorage.setItem('tnhub.dashboardDrillLevel',String(typeof dashboardDrillLevel!=='undefined'?dashboardDrillLevel:'division'));sessionStorage.setItem('tnhub.date',String(date||''));sessionStorage.setItem('tnhub.month',String(month||''))}catch(e){}}
 window.addEventListener('beforeunload',saveCurrentView);
-function handleLogicalBack(){if(!user)return;if(page!=='dashboard'&&page!=='appsHub'){go(appBackParent==='appsHub'?'appsHub':'dashboard',true);installBackGuard();return}if(page==='appsHub'){go('dashboard',true);installBackGuard();return}
- // At the dashboard, attempt to close the app/window. Browsers may block window.close for ordinary tabs.
- try{window.close()}catch(e){}setTimeout(()=>{if(!document.hidden){try{history.back()}catch(e){}}},120)}
+window.addEventListener('pagehide',saveCurrentView);
+function handleLogicalBack(){if(!user)return;
+ if(page!=='dashboard'&&page!=='appsHub'){go('appsHub',true);installBackGuard();return}
+ if(page==='appsHub'){go('dashboard',true);installBackGuard();return}
+ // Dashboard is the top-level page. Browsers may block window.close for ordinary tabs, so do not navigate away unexpectedly.
+ try{window.close()}catch(e){}
+}
 window.addEventListener('popstate',function(){backGuardInstalled=false;handleLogicalBack()});
 
 function scopeBranches(){
@@ -2038,7 +2046,7 @@ function startRealtime(){
 }
 function stopRealtime(){realtimeUnsubs.forEach(fn=>{try{fn()}catch(_){}});realtimeUnsubs=[];realtimeStarted=false;}
 
-auth.onAuthStateChanged(fu=>{if(fu)afterAuth(fu);else{stopRealtime();clearTimeout(realtimeRenderTimer);user=null;profile=null;window.user=null;controlCentreOpen=false;document.getElementById('tnhub-health-modal')?.remove();document.getElementById('quick-actions-overlay')?.remove();document.getElementById('tnhub-enterprise-strip')?.remove();rootLogin();if(loginMessage)msg(loginMessage,loginType)}});
+auth.onAuthStateChanged(fu=>{if(fu)afterAuth(fu);else{stopRealtime();clearTimeout(realtimeRenderTimer);user=null;profile=null;window.user=null;document.getElementById('tnhub-health-modal')?.remove();document.getElementById('quick-actions-overlay')?.remove();document.getElementById('tnhub-enterprise-strip')?.remove();rootLogin();if(loginMessage)msg(loginMessage,loginType)}});
 </script>
 <style id="tn-hub-live-sync-and-blue-theme">
 :root{--navy:#123b70;--blue:#1769aa;--bg:#f4f7fb;--ink:#172b43;--muted:#63758b;--line:#dce5ef;--green:#18794e;--red:#b42318;--amber:#a15c07;--gold:#c69b45}
@@ -2096,7 +2104,14 @@ auth.onAuthStateChanged(fu=>{if(fu)afterAuth(fu);else{stopRealtime();clearTimeou
 })();
 </script>
 
-<script>if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("./service-worker.js").catch(e=>console.warn("Service worker registration failed",e));</script><script>
+<script id="tnhub-disable-stale-service-worker">
+// Keep the live app stable during reports. Remove old service workers that may serve stale HTML or force reloads.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    registrations.forEach(registration => registration.unregister());
+  }).catch(error => console.warn("Service worker cleanup skipped", error));
+}
+</script><script>
 // Reconcile immediately on input, without saving or refreshing.
 document.addEventListener('input',function(ev){
  const m=/^cih_(?:gl|cash)_(.+)$/.exec(ev.target.id||'');if(!m)return;
@@ -2662,7 +2677,8 @@ td[id^="allHint_"],
 .exec-kpi .exec-mini-metrics{gap:7px}
 @media(max-width:900px){.exec-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.exec-kpis{grid-template-columns:minmax(0,1fr)}}
-</style>\n
+</style>
+
 <style id="tnhub-bottom-nav-navy-frosted-final">
 /* Bottom navigation only: navy-blue frosted glass, larger icons, white labels */
 .mobile-bottom-nav {
@@ -2718,13 +2734,18 @@ td[id^="allHint_"],
 .footer, footer, .report-footnote, .target-rule-note, .report-period-note, .kpi-card .kpi-note,
 .target-allocation-table th:nth-child(4), .target-allocation-table td:nth-child(4),
 #allHint_ELA, #allHint_GoldLoan, #allHint_FD, #allHint_Insurance,
-.side > .notice:not(.error), .calculation-note, .calculation-notes, .app-note, .bottom-note { display:none !important; }
+.side > .notice:not(.error), .calculation-note, .calculation-notes, .app-note, .bottom-note, .calculation-footnote, .calculation-hint, .report-calculation-note, .target-calculation-note { display:none !important; }
 /* Avoid any generated plain-text newline marker from appearing at the bottom of the app. */
 #root { overflow-wrap:anywhere; }
 </style>
 
 <script id="tnhub-strip-stray-newline-markers">
-(function(){function clean(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const remove=[];while(w.nextNode()){const n=w.currentNode;if(/^(?:\\n|\\r\\n)$/.test(n.nodeValue.trim()))remove.push(n)}remove.forEach(n=>n.parentNode&&n.parentNode.removeChild(n))}function start(){clean(document.body);if(window.MutationObserver)new MutationObserver(records=>records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE){if(/^(?:\\n|\\r\\n)$/.test(n.nodeValue.trim()))n.remove()}else if(n.nodeType===Node.ELEMENT_NODE)clean(n)}))).observe(document.body,{childList:true,subtree:true})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()})();
+(function(){
+  function isMarker(value){const t=String(value||'').trim();return t==='\\n'||t==='\\r\\n'||t==='\n'||t==='\r\n';}
+  function clean(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const remove=[];while(w.nextNode()){const n=w.currentNode;if(isMarker(n.nodeValue))remove.push(n)}remove.forEach(n=>n.parentNode&&n.parentNode.removeChild(n))}
+  function start(){clean(document.body);if(window.MutationObserver)new MutationObserver(records=>records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===Node.TEXT_NODE){if(isMarker(n.nodeValue))n.remove()}else if(n.nodeType===Node.ELEMENT_NODE)clean(n)}))).observe(document.body,{childList:true,subtree:true})}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
 </script>
 </body>
 </html>
