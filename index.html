@@ -1228,6 +1228,62 @@ body { overflow:hidden !important; }
 }
 </style>
 
+
+<style id="tnhub-clean-mobile-navigation-final">
+/* Final mobile navigation correction: five equal items, no floating/overlapping centre button. */
+@media (max-width: 900px) {
+  .mobile-bottom-nav, #root .mobile-bottom-nav, #root > .mobile-bottom-nav {
+    position: fixed !important; inset: auto 0 0 0 !important;
+    z-index: 2147483000 !important; display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: stretch !important; gap: 2px !important;
+    width: 100% !important; height: auto !important; min-height: 70px !important;
+    margin: 0 !important; padding: 6px 5px calc(6px + env(safe-area-inset-bottom)) !important;
+    box-sizing: border-box !important; overflow: visible !important;
+    border-radius: 14px 14px 0 0 !important;
+    background: rgba(23,54,107,.97) !important; color: #fff !important;
+    border-top: 1px solid rgba(255,255,255,.28) !important;
+    box-shadow: 0 -4px 16px rgba(10,32,72,.16) !important;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  }
+  .mobile-bottom-nav::before, .mobile-bottom-nav::after { display: none !important; content: none !important; }
+  .mobile-bottom-nav button, #root .mobile-bottom-nav button {
+    position: static !important; inset: auto !important; transform: none !important;
+    display: flex !important; flex-direction: column !important;
+    align-items: center !important; justify-content: center !important;
+    align-self: stretch !important; width: 100% !important; min-width: 0 !important;
+    max-width: 100% !important; min-height: 56px !important; height: auto !important;
+    margin: 0 !important; padding: 5px 1px !important; gap: 4px !important;
+    border: 1px solid transparent !important; border-radius: 10px !important;
+    background: transparent !important; box-shadow: none !important;
+    color: #fff !important; font-size: clamp(9px, 2.6vw, 12px) !important;
+    line-height: 1.1 !important; font-weight: 600 !important; white-space: nowrap !important;
+    overflow: visible !important;
+  }
+  .mobile-bottom-nav button span:last-child { display: block !important; visibility: visible !important; opacity: 1 !important; white-space: nowrap !important; }
+  .mobile-bottom-nav button .bottom-icon { display: block !important; font-size: 23px !important; line-height: 1.05 !important; color: inherit !important; }
+  .mobile-bottom-nav button.active { background: rgba(255,255,255,.14) !important; border-color: rgba(226,193,122,.65) !important; color: #fff !important; }
+  .mobile-bottom-nav button.active .bottom-icon { color: #e2c17a !important; }
+  .mobile-bottom-nav .quick-action-main, #root .mobile-bottom-nav .quick-action-main {
+    position: static !important; inset: auto !important; transform: none !important;
+    align-self: stretch !important; min-height: 56px !important; height: auto !important;
+    margin: 0 !important; padding: 5px 1px !important; border-radius: 10px !important;
+    background: transparent !important; box-shadow: none !important;
+    color: #fff !important; font-size: clamp(9px, 2.6vw, 12px) !important;
+  }
+  .mobile-bottom-nav .quick-plus, #root .mobile-bottom-nav .quick-plus {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    width: 27px !important; height: 27px !important; min-width: 27px !important;
+    flex: 0 0 27px !important; margin: 0 !important; border-radius: 8px !important;
+    border: 1px solid rgba(226,193,122,.8) !important;
+    background: rgba(226,193,122,.18) !important; color: #f1d38d !important;
+    box-shadow: none !important; font-size: 23px !important; line-height: 1 !important;
+  }
+  body { padding-bottom: calc(82px + env(safe-area-inset-bottom)) !important; }
+}
+@media (min-width: 901px) { .mobile-bottom-nav { display: none !important; } }
+</style>
+
 </body></html>`);win.document.close();
 }
 
@@ -4141,5 +4197,61 @@ body { overflow:hidden !important; }
   #root > .mobile-bottom-nav { display:none !important; }
 }
 </style>
+
+<style id="tnhub-clean-mobile-navigation-final">
+/* Final mobile navigation correction: five equal items, no floating/overlapping centre button. */
+@media (max-width: 900px) {
+  .mobile-bottom-nav, #root .mobile-bottom-nav, #root > .mobile-bottom-nav {
+    position: fixed !important; inset: auto 0 0 0 !important;
+    z-index: 2147483000 !important; display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: stretch !important; gap: 2px !important;
+    width: 100% !important; height: auto !important; min-height: 70px !important;
+    margin: 0 !important; padding: 6px 5px calc(6px + env(safe-area-inset-bottom)) !important;
+    box-sizing: border-box !important; overflow: visible !important;
+    border-radius: 14px 14px 0 0 !important;
+    background: rgba(23,54,107,.97) !important; color: #fff !important;
+    border-top: 1px solid rgba(255,255,255,.28) !important;
+    box-shadow: 0 -4px 16px rgba(10,32,72,.16) !important;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  }
+  .mobile-bottom-nav::before, .mobile-bottom-nav::after { display: none !important; content: none !important; }
+  .mobile-bottom-nav button, #root .mobile-bottom-nav button {
+    position: static !important; inset: auto !important; transform: none !important;
+    display: flex !important; flex-direction: column !important;
+    align-items: center !important; justify-content: center !important;
+    align-self: stretch !important; width: 100% !important; min-width: 0 !important;
+    max-width: 100% !important; min-height: 56px !important; height: auto !important;
+    margin: 0 !important; padding: 5px 1px !important; gap: 4px !important;
+    border: 1px solid transparent !important; border-radius: 10px !important;
+    background: transparent !important; box-shadow: none !important;
+    color: #fff !important; font-size: clamp(9px, 2.6vw, 12px) !important;
+    line-height: 1.1 !important; font-weight: 600 !important; white-space: nowrap !important;
+    overflow: visible !important;
+  }
+  .mobile-bottom-nav button span:last-child { display: block !important; visibility: visible !important; opacity: 1 !important; white-space: nowrap !important; }
+  .mobile-bottom-nav button .bottom-icon { display: block !important; font-size: 23px !important; line-height: 1.05 !important; color: inherit !important; }
+  .mobile-bottom-nav button.active { background: rgba(255,255,255,.14) !important; border-color: rgba(226,193,122,.65) !important; color: #fff !important; }
+  .mobile-bottom-nav button.active .bottom-icon { color: #e2c17a !important; }
+  .mobile-bottom-nav .quick-action-main, #root .mobile-bottom-nav .quick-action-main {
+    position: static !important; inset: auto !important; transform: none !important;
+    align-self: stretch !important; min-height: 56px !important; height: auto !important;
+    margin: 0 !important; padding: 5px 1px !important; border-radius: 10px !important;
+    background: transparent !important; box-shadow: none !important;
+    color: #fff !important; font-size: clamp(9px, 2.6vw, 12px) !important;
+  }
+  .mobile-bottom-nav .quick-plus, #root .mobile-bottom-nav .quick-plus {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    width: 27px !important; height: 27px !important; min-width: 27px !important;
+    flex: 0 0 27px !important; margin: 0 !important; border-radius: 8px !important;
+    border: 1px solid rgba(226,193,122,.8) !important;
+    background: rgba(226,193,122,.18) !important; color: #f1d38d !important;
+    box-shadow: none !important; font-size: 23px !important; line-height: 1 !important;
+  }
+  body { padding-bottom: calc(82px + env(safe-area-inset-bottom)) !important; }
+}
+@media (min-width: 901px) { .mobile-bottom-nav { display: none !important; } }
+</style>
+
 </body>
 </html>
