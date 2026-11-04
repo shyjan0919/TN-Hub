@@ -740,6 +740,63 @@ body:has(#root .main) { overflow-x:hidden !important; }
 }
 </style>
 
+
+<style id="tnhub-royal-navy-fixed-layout-final">
+:root{--tnhub-royal:#17366b;--tnhub-royal-deep:#0d2854;--tnhub-gold:#e2c17a;--tnhub-page:#f3f6fb}
+body{background:var(--tnhub-page)!important;color:#1c2d49!important;overflow:hidden!important}
+#root{height:100dvh!important;min-height:0!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+.top{position:relative!important;z-index:1200!important;flex:0 0 auto!important;background:linear-gradient(110deg,#102d5b 0%,#17366b 65%,#244b82 100%)!important;color:#fff!important;border-bottom:1px solid rgba(226,193,122,.65)!important;box-shadow:0 5px 22px rgba(13,40,84,.15)!important;padding:12px 22px!important}
+.top .brand h1,.top .brand p,.top .small{color:#fff!important}
+.layout{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-width:none!important;width:100%!important;display:grid!important;grid-template-columns:250px minmax(0,1fr)!important;gap:0!important;overflow:hidden!important;margin:0!important;align-items:stretch!important}
+.side{position:relative!important;top:auto!important;left:auto!important;bottom:auto!important;height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;background:linear-gradient(180deg,#17366b,#102b58)!important;border-right:1px solid #d7e1ef!important;padding:16px 11px!important}
+.side .nav{color:#edf3ff!important;border-radius:10px!important;padding:12px 11px!important}
+.side .nav.active,.side .nav:hover{background:rgba(255,255,255,.14)!important;border-color:rgba(226,193,122,.45)!important;color:#fff!important;box-shadow:inset 3px 0 var(--tnhub-gold)!important}
+.side .nav-icon{font-size:19px!important}
+.main{height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;padding:22px 26px 28px!important;scrollbar-gutter:stable}
+.mobile-bottom-nav{background:rgba(23,54,107,.88)!important;border-top:1px solid rgba(255,255,255,.3)!important;box-shadow:0 -8px 28px rgba(13,40,84,.18)!important;backdrop-filter:blur(22px) saturate(165%)!important;-webkit-backdrop-filter:blur(22px) saturate(165%)!important;color:#fff!important}
+.mobile-bottom-nav button{color:#f5f8ff!important;font-size:12px!important;font-weight:700!important;min-height:58px!important}
+.mobile-bottom-nav button.active{color:#fff!important;background:rgba(255,255,255,.15)!important;box-shadow:inset 0 0 0 1px rgba(226,193,122,.6)!important}
+.mobile-bottom-nav button.active .bottom-icon{color:var(--tnhub-gold)!important}
+.mobile-bottom-nav .bottom-icon{font-size:25px!important;line-height:1.15!important}
+.mobile-bottom-nav .quick-action-main{transform:translateY(-3px)!important;font-size:11px!important}
+.mobile-bottom-nav .quick-plus{width:48px!important;height:48px!important;border-radius:15px!important;background:linear-gradient(145deg,#f6dfa0,#d9b45d)!important;color:#17366b!important;border:3px solid rgba(255,255,255,.75)!important;box-shadow:0 5px 15px rgba(4,20,48,.24)!important;font-size:29px!important}
+.card,.kpi-card{border-color:#dce5f1!important}
+.head h2,.page-head h2,.section h3,.card h3{color:#17366b!important}
+.btn.primary{background:linear-gradient(110deg,#17366b,#28518d)!important}
+@media(min-width:901px){
+ .mobile-bottom-nav{display:none!important}
+ .top{flex:0 0 auto!important}
+ .layout{grid-template-columns:250px minmax(0,1fr)!important}
+ .side{display:block!important}
+ .main{padding-bottom:28px!important}
+ body{padding-bottom:0!important}
+}
+@media(max-width:900px){
+ body{overflow:hidden!important}
+ #root{height:100dvh!important;height:100svh!important}
+ .top{padding:9px 12px!important;min-height:64px!important}
+ .top .brand-mark{width:38px!important;height:38px!important;object-fit:contain!important}
+ .top .brand h1{font-size:17px!important;margin:0!important}
+ .top .brand p{display:none!important}
+ .top>div:last-child{gap:5px!important}
+ .top .small{font-size:10px!important}
+ .top-tools{gap:5px!important}
+ .top-tools input{max-width:125px!important;font-size:12px!important}
+ .top-tools .btn span{display:none!important}
+ .layout{display:block!important;position:relative!important;min-height:0!important;height:auto!important;flex:1 1 auto!important;overflow:hidden!important}
+ .side{display:none!important}
+ .main{height:100%!important;max-height:none!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:14px 12px calc(86px + env(safe-area-inset-bottom))!important}
+ .mobile-bottom-nav{display:grid!important;grid-template-columns:1fr 1fr 1.2fr 1fr 1fr!important;align-items:end!important;gap:2px!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;min-height:70px!important}
+ .mobile-bottom-nav button{min-width:0!important;white-space:nowrap!important;overflow:visible!important;padding:4px 1px!important;gap:3px!important;font-size:10px!important}
+ .mobile-bottom-nav button span:last-child{white-space:nowrap!important;font-size:10px!important}
+ .mobile-bottom-nav .bottom-icon{font-size:23px!important}
+ .mobile-bottom-nav .quick-action-main{transform:translateY(-2px)!important}
+ .mobile-bottom-nav .quick-plus{width:44px!important;height:44px!important;border-radius:14px!important}
+ .main .tablewrap{max-width:100%!important;overflow-x:auto!important}
+}
+@media(max-width:370px){.mobile-bottom-nav button span:last-child{font-size:9px!important}.mobile-bottom-nav .bottom-icon{font-size:21px!important}.top-tools input{max-width:95px!important}}
+</style>
+
 </head>
 <body><div id="root"><div style="min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f7faff,#edf5ff);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#10264d;text-align:center"><div style="max-width:360px;background:#fff;border:1px solid #dce8f6;border-radius:18px;padding:26px;box-shadow:0 10px 35px #0b3b7410"><div style="font-size:28px;margin-bottom:10px">📊</div><h2 style="margin:0 0 8px">TN State HUB</h2><p style="margin:0;color:#60728f;font-size:14px">Opening your workspace…</p><p style="margin:12px 0 0;color:#8492a6;font-size:12px">Please wait while the secure connection starts.</p></div></div></div>
 <script>
@@ -767,6 +824,8 @@ let staffDirectory=[], doms=[], contests=[];
 let user=null,page='dashboard',loginMessage='',loginType='info',date=today(),month=today().slice(0,7);
 // Logical back path: feature opened from Apps returns to Apps, then Dashboard, then attempts to exit.
 let appBackParent='dashboard', backGuardInstalled=false;
+// Real in-app history: Back returns to the actual previous page, then parent pages, then Dashboard.
+let tnHubPageHistory=[];
 let profile=null,branches=[],roms=[],divisions=[],mappings=[],targets=[],bases=[],bod=[],eod=[],calling=[],correctionRequests=[],bodCorrectionRequests=[],commitmentReviews=[],zohReviewRequests=[],cihReports=[],goldLoanWeekly=[];
 let realtimeUnsubs=[],realtimeStarted=false;
 // Live-sync health tracking. Firestore onSnapshot is the primary realtime channel.
@@ -783,7 +842,9 @@ async function signOut(){try{try{['tnhub.currentPage','tnhub.selectedBranch','tn
 function roleIs(...roles){return !!user&&roles.includes(user.role)}
 function allowedPages(){if(roleIs('ZOH'))return [['dashboard','▦ Tamil Nadu Overview'],['statePerformance','🏛 Tamil Nadu State Performance'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ MTD & YTD Report'],['managementReports','▣ Management Report Centre'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],['reports','▤ Daily / Weekly / Monthly Reports'],['calling','☎ Calling & Disbursement Leaders'],['performance','▥ Target Not Met Review'],['reviews','✓ Commitment & Escalation Review'],['cih','💵 CIH Reconciliation'],['history','◷ Report History & Corrections'],['bodCorrections','✎ BOD Correction Requests'],['targets','🎯 Monthly Target Strategy'],['mapping','⌘ Organization Mapping'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']];let p=[['dashboard','▦ Business Overview'],['intelligence','◈ Business Intelligence'],['actionPlan','✦ Smart Daily Action Plan'],['analytics3','📊 Rankings, Forecast & Trends'],['branchYtd','▤ MTD & YTD Report'],['domDashboard','▦ DOM Business Dashboard'],['romDashboard','▦ ROM Business Dashboard'],...(roleIs('DOM')?[['approvals','✓ Pending Approval']]:[]),['bases','▤ Monthly ELA Base'],['bod','◎ BOD Commitments'],['eod','↗ EOD Business Report'],['calling','☎ Calling Report'],['glp','▤ Weekly Gold Loan GLP'],['cih','💵 CIH Reconciliation'],['performance','▥ Performance'],['reviews','✓ Commitment & Escalation Review'],['branchReview','▤ Branch Full History'],['history','◷ History & Corrections'],['bodCorrections','✎ BOD Correction Requests']];if(roleIs('SYSTEM_ADMIN'))p.push(['managementReports','▣ Management Report Centre'],['users','♙ User Profiles'],['reset','⚠ Reset Trial Data'],['quality','✓ System Health & QA'],['contests','🏆 Contest Management']);return p}
 function nav(){const icons={dashboard:'◈',statePerformance:'🏛',intelligence:'◉',actionPlan:'✦',analytics3:'📊',zohDashboard:'◈',domDashboard:'▦',romDashboard:'⌘',reports:'▤',calling:'◉',performance:'↗',reviews:'✓',cih:'◫',history:'◷',bodCorrections:'✎',targets:'◎',mapping:'⌘',users:'♙',settings:'⚙'};return allowedPages().map(([k,n])=>`<button class="nav ${page===k?'active':''}" onclick="go('${k}')"><span class="nav-icon" aria-hidden="true">${icons[k]||'◆'}</span><span class="nav-text">${n}</span><span class="nav-arrow" aria-hidden="true">›</span></button>`).join('')}
-function go(p,fromPop=false){if(roleIs('ZOH')&&['bases','bod','eod','users'].includes(p))p='dashboard';if(p==='branchReview'&&selectedBranch==='ALL'){alert('Select a branch first from the dashboard or Target Not Met Review.');return}if(!['businessReportHub','tasksHub','appsHub','profileHub','dashboard','statePerformance','intelligence','actionPlan','analytics3','branchYtd','managementReports','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests','bodCorrections'].includes(p)){console.warn('Unknown page:',p);return}
+function go(p,fromPop=false){
+ if(!fromPop && p!==page){tnHubPageHistory.push(page);if(tnHubPageHistory.length>80)tnHubPageHistory.shift();}
+ if(roleIs('ZOH')&&['bases','bod','eod','users'].includes(p))p='dashboard';if(p==='branchReview'&&selectedBranch==='ALL'){alert('Select a branch first from the dashboard or Target Not Met Review.');return}if(!['businessReportHub','tasksHub','appsHub','profileHub','dashboard','statePerformance','intelligence','actionPlan','analytics3','branchYtd','managementReports','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests','bodCorrections'].includes(p)){console.warn('Unknown page:',p);return}
  // Logical navigation: feature pages return to Apps; Apps returns to Dashboard.
  // This remains predictable even when a feature is opened from search, a shortcut, or a report link.
  if(p==='dashboard'||p==='appsHub') appBackParent='dashboard';
@@ -796,10 +857,20 @@ function saveCurrentView(){try{sessionStorage.setItem('tnhub.currentPage',String
 window.addEventListener('beforeunload',saveCurrentView);
 window.addEventListener('pagehide',saveCurrentView);
 function handleLogicalBack(){if(!user)return;
- if(page!=='dashboard'&&page!=='appsHub'){go('appsHub',true);installBackGuard();return}
- if(page==='appsHub'){go('dashboard',true);installBackGuard();return}
- // Dashboard is the top-level page. Browsers may block window.close for ordinary tabs, so do not navigate away unexpectedly.
- try{window.close()}catch(e){}
+ // Close transient overlays before navigating away.
+ const qa=document.getElementById('quick-actions-overlay');if(qa){qa.remove();return;}
+ const cc=document.getElementById('tnhub-enterprise-strip');if(cc&&cc.classList.contains('open')){cc.classList.remove('open');return;}
+ if(page==='dashboard'){
+   // Browser tabs cannot reliably close themselves; ask before leaving the workspace.
+   if(confirm('You are on the main Dashboard. Do you want to exit TN State HUB?')){try{window.close()}catch(e){}}
+   return;
+ }
+ let target=tnHubPageHistory.pop();
+ if(!target || target===page){
+   if(page==='appsHub'||page==='tasksHub'||page==='profileHub'||page==='businessReportHub')target='dashboard';
+   else target='appsHub';
+ }
+ go(target,true);installBackGuard();
 }
 window.addEventListener('popstate',function(){backGuardInstalled=false;handleLogicalBack()});
 
@@ -1070,78 +1141,67 @@ function downloadZohOperationalPDF(){
  win.document.open();win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${escHtml(d.title)} · TN State HUB</title><style>@page{size:A4 landscape;margin:10mm}*{box-sizing:border-box}body{font:10px/1.35 Arial,sans-serif;color:#172b3a;margin:0}.heading{background:#123c35;color:white;padding:15px 18px;border-radius:5px}.heading h1{font-size:18px;margin:0 0 5px}.heading p{margin:3px 0;font-size:10px}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:5px 12px;margin:12px 0;padding:10px;border:1px solid #dce5df;border-radius:5px}.meta b{color:#123c35}.note{font-size:9px;color:#52645d;margin:7px 0 10px}table{width:100%;border-collapse:collapse;table-layout:auto}thead{display:table-header-group}tr{break-inside:avoid}th,td{border:1px solid #ccd7d2;padding:5px 6px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}th{background:#e8f1ed;color:#123c35;font-size:9px;text-transform:uppercase}td{font-size:9px}td.num{text-align:right;font-variant-numeric:tabular-nums}tbody tr:nth-child(even){background:#f7faf8}.foot{margin-top:10px;font-size:8px;color:#64766f}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.heading{border-radius:0}}</style>
 
 </head><body><div class="heading"><h1>TN STATE HUB · ${escHtml(d.title)}</h1><p>Reporting period: ${escHtml(d.period.toUpperCase())} · ${escHtml(d.start)} to ${escHtml(d.end)}</p><p>Generated by ${escHtml(d.generatedBy)} · ${escHtml(d.generatedAt)}</p></div><div class="meta"><div><b>Branches in scope:</b> ${d.branches}</div><div><b>View:</b> ${escHtml(d.scope)}</div><div><b>Records:</b> ${d.rows.length}</div><div><b>Division filter:</b> ${escHtml(reportDivision==='ALL'?'All divisions':reportDivision)}</div><div><b>ROM filter:</b> ${escHtml(reportRom==='ALL'?'All ROMs':reportRom)}</div><div><b>Output:</b> Print-ready PDF layout</div></div>${d.type==='BOD'?'<p class="note">Only DOM-approved commitments are included. Each product is shown separately; count and currency values are not combined.</p>':''}<table><thead><tr>${d.headers.map(h=>`<th>${escHtml(h)}</th>`).join('')}</tr></thead><tbody>${rows||`<tr><td colspan="${d.headers.length}" style="text-align:center;padding:20px">No records found for the selected filters and period.</td></tr>`}</tbody></table><div class="foot">TN State HUB · Confidential internal management report · Generated ${escHtml(d.generatedAt)}</div><script>window.onload=()=>setTimeout(()=>window.print(),250);<\/script>
-<style id="tnhub-royal-navy-fixed-workspace">
-:root{--tn-royal-navy:#17366B;--tn-royal-deep:#102750;--tn-royal-gold:#E2C17A;--tn-light-bg:#F3F6FB}
-body:has(#root .top){background:var(--tn-light-bg)!important;overflow:hidden!important;height:100dvh!important;min-height:0!important}
-#root:has(.top){height:100dvh!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
-#root .top{position:relative!important;top:auto!important;z-index:30!important;flex:0 0 auto!important;background:linear-gradient(112deg,#102750 0%,#17366B 72%,#254a83 100%)!important;border-bottom:1px solid rgba(226,193,122,.58)!important;box-shadow:0 4px 18px rgba(16,39,80,.16)!important}
-#root .layout{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;overflow:hidden!important;display:grid!important;grid-template-columns:235px minmax(0,1fr)!important;margin:0 auto!important;width:100%!important;max-width:1600px!important}
-#root .side{position:relative!important;top:auto!important;height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;border-right:1px solid #dce5f0!important}
-#root .main{height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important;padding-bottom:24px!important}
-#root .nav.active,#root .nav:hover{background:#e9eff9!important;color:var(--tn-royal-navy)!important;border-left:3px solid var(--tn-royal-gold)!important}
-#root .nav .nav-icon{color:var(--tn-royal-navy)!important}
-.mobile-bottom-nav{background:rgba(23,54,107,.88)!important;border:1px solid rgba(255,255,255,.28)!important;border-bottom:0!important;box-shadow:0 -8px 30px rgba(16,39,80,.22)!important;backdrop-filter:blur(22px) saturate(155%)!important;-webkit-backdrop-filter:blur(22px) saturate(155%)!important;border-radius:18px 18px 0 0!important}
-.mobile-bottom-nav button{color:rgba(255,255,255,.88)!important;min-height:58px!important;font-size:11px!important;font-weight:750!important;gap:5px!important}
-.mobile-bottom-nav button .bottom-icon{font-size:27px!important;line-height:1!important;color:#fff!important}
-.mobile-bottom-nav button.active{background:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:inset 0 -3px 0 var(--tn-royal-gold)!important}
-.mobile-bottom-nav button.active .bottom-icon{color:var(--tn-royal-gold)!important}
-.mobile-bottom-nav .quick-action-main .quick-plus{width:52px!important;height:42px!important;border-radius:14px!important;background:linear-gradient(135deg,#f0d99c,#d6ad55)!important;color:#17366B!important;box-shadow:0 4px 12px rgba(8,22,49,.22)!important;font-size:32px!important;display:grid!important;place-items:center!important}
-@media(max-width:900px){
- #root .layout{display:flex!important;flex-direction:column!important;height:auto!important;flex:1 1 auto!important;min-height:0!important;width:100%!important}
- #root .layout>.side{display:none!important}
- #root .top{padding:9px 12px!important}
- #root .top>.brand{flex:0 0 auto!important;min-width:0!important}
- #root .top>div:last-child{flex:1 1 auto!important;min-width:0!important;max-width:100%!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important}
- #root .top .brand-mark{width:38px!important;height:38px!important;object-fit:contain!important}
- #root .top .brand h1{font-size:15px!important}
- #root .top .brand p{font-size:10px!important}
- #root .top .top-tools{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:5px!important}
- #root .top .top-tools input{max-width:min(42vw,190px)!important;min-width:90px!important}
- #root .top .top-tools .btn{padding:7px 8px!important;font-size:11px!important}
- #root .main{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 11px calc(84px + env(safe-area-inset-bottom))!important}
- body:has(#root .top){padding-bottom:0!important}
- .mobile-bottom-nav{position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:1000!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:3px!important;padding:7px 8px calc(7px + env(safe-area-inset-bottom))!important}
- .mobile-bottom-nav button{min-width:0!important;padding:5px 1px!important;white-space:nowrap!important}
- .mobile-bottom-nav button span:last-child{font-size:10px!important;white-space:nowrap!important;letter-spacing:-.15px!important}
- .mobile-bottom-nav .quick-action-main .quick-plus{width:42px!important;height:36px!important;font-size:28px!important}
+<style id="tnhub-fixed-shell-report-only-scroll-v2">
+/* TN State HUB: keep the shell stationary; only the report/content pane scrolls. */
+html, body { width:100%; height:100%; min-height:0; margin:0; }
+body { overflow:hidden !important; }
+#root {
+  height:100vh !important; height:100dvh !important; min-height:0 !important;
+  display:flex !important; flex-direction:column !important;
+  overflow:hidden !important; box-sizing:border-box !important;
 }
-@media(min-width:901px){.mobile-bottom-nav{display:none!important}#root .top{min-height:72px!important}}
-@media(prefers-reduced-motion:reduce){#root .main{scroll-behavior:auto!important}}
+#root > .top {
+  position:relative !important; top:auto !important; z-index:100 !important;
+  flex:0 0 auto !important; width:100% !important;
+}
+#root > .layout {
+  display:grid !important; grid-template-columns:250px minmax(0,1fr) !important;
+  flex:1 1 0 !important; height:auto !important; min-height:0 !important;
+  max-height:none !important; overflow:hidden !important; width:100% !important;
+}
+#root > .layout > .side {
+  position:relative !important; top:auto !important; align-self:stretch !important;
+  height:auto !important; min-height:0 !important; max-height:none !important;
+  overflow-x:hidden !important; overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+}
+#root > .layout > .main {
+  display:block !important; position:relative !important; flex:1 1 auto !important;
+  width:100% !important; height:auto !important; min-height:0 !important;
+  max-height:none !important; overflow-x:auto !important; overflow-y:auto !important;
+  overscroll-behavior:contain !important; -webkit-overflow-scrolling:touch !important;
+  scrollbar-gutter:stable; padding-bottom:28px !important;
+}
+#root > .mobile-bottom-nav {
+  position:relative !important; inset:auto !important; z-index:120 !important;
+  flex:0 0 auto !important; width:100% !important;
+}
+/* Tablet/mobile: hide the desktop sidebar; keep header and bottom nav in the shell. */
+@media (max-width:900px) {
+  #root { height:100vh !important; height:100dvh !important; overflow:hidden !important; }
+  #root > .top { flex:0 0 auto !important; }
+  #root > .layout {
+    display:flex !important; flex-direction:column !important;
+    flex:1 1 0 !important; height:auto !important; min-height:0 !important;
+    overflow:hidden !important;
+  }
+  #root > .layout > .side { display:none !important; }
+  #root > .layout > .main {
+    display:block !important; flex:1 1 0 !important; width:100% !important;
+    height:auto !important; min-height:0 !important; max-height:none !important;
+    overflow-x:auto !important; overflow-y:auto !important;
+    padding-bottom:20px !important;
+  }
+  #root > .mobile-bottom-nav {
+    position:relative !important; display:grid !important; flex:0 0 auto !important;
+    inset:auto !important; min-height:68px !important;
+    padding-bottom:calc(7px + env(safe-area-inset-bottom)) !important;
+  }
+}
+@media (min-width:901px) {
+  #root > .mobile-bottom-nav { display:none !important; }
+}
 </style>
-<script id="tnhub-navigation-history-fix">
-(function(){
- const originalGo=window.go;
- if(typeof originalGo!=='function')return;
- const stack=[];let suppress=false;let exitPromptAt=0;
- const parentMap={
-   history:'appsHub',bodCorrections:'appsHub',targets:'appsHub',mapping:'appsHub',bases:'appsHub',bod:'businessReportHub',eod:'businessReportHub',calling:'businessReportHub',reports:'businessReportHub',glp:'appsHub',branchReview:'performance',cih:'appsHub',performance:'appsHub',reviews:'tasksHub',approvals:'tasksHub',contests:'appsHub',users:'appsHub',reset:'appsHub',quality:'appsHub',statePerformance:'dashboard',intelligence:'dashboard',actionPlan:'tasksHub',analytics3:'dashboard',branchYtd:'dashboard',managementReports:'dashboard',domDashboard:'dashboard',romDashboard:'dashboard',
-   businessReportHub:'appsHub',tasksHub:'dashboard',profileHub:'dashboard',appsHub:'dashboard'
- };
- function current(){return String(typeof page!=='undefined'?page:'dashboard')}
- function pushCurrent(next){const cur=current();if(cur===next)return;stack.push({page:cur,selectedBranch:(typeof selectedBranch!=='undefined'?selectedBranch:'ALL')});if(stack.length>80)stack.shift()}
- window.go=function(next,fromPop){if(!fromPop&&!suppress)pushCurrent(next);suppress=true;try{return originalGo.call(this,next,fromPop)}finally{setTimeout(()=>{suppress=false;},0)}};
- window.handleLogicalBack=function(){
-   if(!window.user)return;
-   const cur=current();
-   if(cur==='dashboard'){
-     const now=Date.now();
-     if(now-exitPromptAt<1800){exitPromptAt=0;try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){};return}
-     exitPromptAt=now;
-     try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){}
-     let toast=document.getElementById('tnhub-back-exit-toast');if(!toast){toast=document.createElement('div');toast.id='tnhub-back-exit-toast';toast.textContent='Press Back again to leave TN State HUB';toast.style.cssText='position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2000;background:#102750;color:white;padding:12px 16px;border-radius:12px;box-shadow:0 8px 24px #10275033;font-size:13px;max-width:90vw;text-align:center';document.body.appendChild(toast)}toast.style.display='block';clearTimeout(window.__tnhubExitToastTimer);window.__tnhubExitToastTimer=setTimeout(()=>toast?.remove(),1900);return;
-   }
-   let target=null;
-   while(stack.length&&!target){const item=stack.pop();if(item&&item.page&&item.page!==cur)target=item}
-   if(!target){const fallback=parentMap[cur]||'dashboard';target={page:fallback,selectedBranch:(typeof selectedBranch!=='undefined'?selectedBranch:'ALL')}}
-   if(target.selectedBranch!==undefined&&typeof selectedBranch!=='undefined')selectedBranch=target.selectedBranch;
-   suppress=true;try{originalGo.call(this,target.page,true)}finally{setTimeout(()=>{suppress=false},0)}
-   try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){}
- };
- // Keep the approved five-item mobile navigation active-state in sync with the current section.
- const oldRender=window.render;
- if(typeof oldRender==='function')window.render=function(){const result=oldRender.apply(this,arguments);return result};
-})();
-</script>
 
 </body></html>`);win.document.close();
 }
@@ -3799,78 +3859,67 @@ body:has(#root .main) { overflow-x:hidden !important; }
 </script>
 
 
-<style id="tnhub-royal-navy-fixed-workspace">
-:root{--tn-royal-navy:#17366B;--tn-royal-deep:#102750;--tn-royal-gold:#E2C17A;--tn-light-bg:#F3F6FB}
-body:has(#root .top){background:var(--tn-light-bg)!important;overflow:hidden!important;height:100dvh!important;min-height:0!important}
-#root:has(.top){height:100dvh!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
-#root .top{position:relative!important;top:auto!important;z-index:30!important;flex:0 0 auto!important;background:linear-gradient(112deg,#102750 0%,#17366B 72%,#254a83 100%)!important;border-bottom:1px solid rgba(226,193,122,.58)!important;box-shadow:0 4px 18px rgba(16,39,80,.16)!important}
-#root .layout{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;overflow:hidden!important;display:grid!important;grid-template-columns:235px minmax(0,1fr)!important;margin:0 auto!important;width:100%!important;max-width:1600px!important}
-#root .side{position:relative!important;top:auto!important;height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;border-right:1px solid #dce5f0!important}
-#root .main{height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important;padding-bottom:24px!important}
-#root .nav.active,#root .nav:hover{background:#e9eff9!important;color:var(--tn-royal-navy)!important;border-left:3px solid var(--tn-royal-gold)!important}
-#root .nav .nav-icon{color:var(--tn-royal-navy)!important}
-.mobile-bottom-nav{background:rgba(23,54,107,.88)!important;border:1px solid rgba(255,255,255,.28)!important;border-bottom:0!important;box-shadow:0 -8px 30px rgba(16,39,80,.22)!important;backdrop-filter:blur(22px) saturate(155%)!important;-webkit-backdrop-filter:blur(22px) saturate(155%)!important;border-radius:18px 18px 0 0!important}
-.mobile-bottom-nav button{color:rgba(255,255,255,.88)!important;min-height:58px!important;font-size:11px!important;font-weight:750!important;gap:5px!important}
-.mobile-bottom-nav button .bottom-icon{font-size:27px!important;line-height:1!important;color:#fff!important}
-.mobile-bottom-nav button.active{background:rgba(255,255,255,.14)!important;color:#fff!important;box-shadow:inset 0 -3px 0 var(--tn-royal-gold)!important}
-.mobile-bottom-nav button.active .bottom-icon{color:var(--tn-royal-gold)!important}
-.mobile-bottom-nav .quick-action-main .quick-plus{width:52px!important;height:42px!important;border-radius:14px!important;background:linear-gradient(135deg,#f0d99c,#d6ad55)!important;color:#17366B!important;box-shadow:0 4px 12px rgba(8,22,49,.22)!important;font-size:32px!important;display:grid!important;place-items:center!important}
-@media(max-width:900px){
- #root .layout{display:flex!important;flex-direction:column!important;height:auto!important;flex:1 1 auto!important;min-height:0!important;width:100%!important}
- #root .layout>.side{display:none!important}
- #root .top{padding:9px 12px!important}
- #root .top>.brand{flex:0 0 auto!important;min-width:0!important}
- #root .top>div:last-child{flex:1 1 auto!important;min-width:0!important;max-width:100%!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important}
- #root .top .brand-mark{width:38px!important;height:38px!important;object-fit:contain!important}
- #root .top .brand h1{font-size:15px!important}
- #root .top .brand p{font-size:10px!important}
- #root .top .top-tools{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:5px!important}
- #root .top .top-tools input{max-width:min(42vw,190px)!important;min-width:90px!important}
- #root .top .top-tools .btn{padding:7px 8px!important;font-size:11px!important}
- #root .main{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 11px calc(84px + env(safe-area-inset-bottom))!important}
- body:has(#root .top){padding-bottom:0!important}
- .mobile-bottom-nav{position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:1000!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:3px!important;padding:7px 8px calc(7px + env(safe-area-inset-bottom))!important}
- .mobile-bottom-nav button{min-width:0!important;padding:5px 1px!important;white-space:nowrap!important}
- .mobile-bottom-nav button span:last-child{font-size:10px!important;white-space:nowrap!important;letter-spacing:-.15px!important}
- .mobile-bottom-nav .quick-action-main .quick-plus{width:42px!important;height:36px!important;font-size:28px!important}
+<style id="tnhub-fixed-shell-report-only-scroll-v2">
+/* TN State HUB: keep the shell stationary; only the report/content pane scrolls. */
+html, body { width:100%; height:100%; min-height:0; margin:0; }
+body { overflow:hidden !important; }
+#root {
+  height:100vh !important; height:100dvh !important; min-height:0 !important;
+  display:flex !important; flex-direction:column !important;
+  overflow:hidden !important; box-sizing:border-box !important;
 }
-@media(min-width:901px){.mobile-bottom-nav{display:none!important}#root .top{min-height:72px!important}}
-@media(prefers-reduced-motion:reduce){#root .main{scroll-behavior:auto!important}}
+#root > .top {
+  position:relative !important; top:auto !important; z-index:100 !important;
+  flex:0 0 auto !important; width:100% !important;
+}
+#root > .layout {
+  display:grid !important; grid-template-columns:250px minmax(0,1fr) !important;
+  flex:1 1 0 !important; height:auto !important; min-height:0 !important;
+  max-height:none !important; overflow:hidden !important; width:100% !important;
+}
+#root > .layout > .side {
+  position:relative !important; top:auto !important; align-self:stretch !important;
+  height:auto !important; min-height:0 !important; max-height:none !important;
+  overflow-x:hidden !important; overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+}
+#root > .layout > .main {
+  display:block !important; position:relative !important; flex:1 1 auto !important;
+  width:100% !important; height:auto !important; min-height:0 !important;
+  max-height:none !important; overflow-x:auto !important; overflow-y:auto !important;
+  overscroll-behavior:contain !important; -webkit-overflow-scrolling:touch !important;
+  scrollbar-gutter:stable; padding-bottom:28px !important;
+}
+#root > .mobile-bottom-nav {
+  position:relative !important; inset:auto !important; z-index:120 !important;
+  flex:0 0 auto !important; width:100% !important;
+}
+/* Tablet/mobile: hide the desktop sidebar; keep header and bottom nav in the shell. */
+@media (max-width:900px) {
+  #root { height:100vh !important; height:100dvh !important; overflow:hidden !important; }
+  #root > .top { flex:0 0 auto !important; }
+  #root > .layout {
+    display:flex !important; flex-direction:column !important;
+    flex:1 1 0 !important; height:auto !important; min-height:0 !important;
+    overflow:hidden !important;
+  }
+  #root > .layout > .side { display:none !important; }
+  #root > .layout > .main {
+    display:block !important; flex:1 1 0 !important; width:100% !important;
+    height:auto !important; min-height:0 !important; max-height:none !important;
+    overflow-x:auto !important; overflow-y:auto !important;
+    padding-bottom:20px !important;
+  }
+  #root > .mobile-bottom-nav {
+    position:relative !important; display:grid !important; flex:0 0 auto !important;
+    inset:auto !important; min-height:68px !important;
+    padding-bottom:calc(7px + env(safe-area-inset-bottom)) !important;
+  }
+}
+@media (min-width:901px) {
+  #root > .mobile-bottom-nav { display:none !important; }
+}
 </style>
-<script id="tnhub-navigation-history-fix">
-(function(){
- const originalGo=window.go;
- if(typeof originalGo!=='function')return;
- const stack=[];let suppress=false;let exitPromptAt=0;
- const parentMap={
-   history:'appsHub',bodCorrections:'appsHub',targets:'appsHub',mapping:'appsHub',bases:'appsHub',bod:'businessReportHub',eod:'businessReportHub',calling:'businessReportHub',reports:'businessReportHub',glp:'appsHub',branchReview:'performance',cih:'appsHub',performance:'appsHub',reviews:'tasksHub',approvals:'tasksHub',contests:'appsHub',users:'appsHub',reset:'appsHub',quality:'appsHub',statePerformance:'dashboard',intelligence:'dashboard',actionPlan:'tasksHub',analytics3:'dashboard',branchYtd:'dashboard',managementReports:'dashboard',domDashboard:'dashboard',romDashboard:'dashboard',
-   businessReportHub:'appsHub',tasksHub:'dashboard',profileHub:'dashboard',appsHub:'dashboard'
- };
- function current(){return String(typeof page!=='undefined'?page:'dashboard')}
- function pushCurrent(next){const cur=current();if(cur===next)return;stack.push({page:cur,selectedBranch:(typeof selectedBranch!=='undefined'?selectedBranch:'ALL')});if(stack.length>80)stack.shift()}
- window.go=function(next,fromPop){if(!fromPop&&!suppress)pushCurrent(next);suppress=true;try{return originalGo.call(this,next,fromPop)}finally{setTimeout(()=>{suppress=false;},0)}};
- window.handleLogicalBack=function(){
-   if(!window.user)return;
-   const cur=current();
-   if(cur==='dashboard'){
-     const now=Date.now();
-     if(now-exitPromptAt<1800){exitPromptAt=0;try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){};return}
-     exitPromptAt=now;
-     try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){}
-     let toast=document.getElementById('tnhub-back-exit-toast');if(!toast){toast=document.createElement('div');toast.id='tnhub-back-exit-toast';toast.textContent='Press Back again to leave TN State HUB';toast.style.cssText='position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2000;background:#102750;color:white;padding:12px 16px;border-radius:12px;box-shadow:0 8px 24px #10275033;font-size:13px;max-width:90vw;text-align:center';document.body.appendChild(toast)}toast.style.display='block';clearTimeout(window.__tnhubExitToastTimer);window.__tnhubExitToastTimer=setTimeout(()=>toast?.remove(),1900);return;
-   }
-   let target=null;
-   while(stack.length&&!target){const item=stack.pop();if(item&&item.page&&item.page!==cur)target=item}
-   if(!target){const fallback=parentMap[cur]||'dashboard';target={page:fallback,selectedBranch:(typeof selectedBranch!=='undefined'?selectedBranch:'ALL')}}
-   if(target.selectedBranch!==undefined&&typeof selectedBranch!=='undefined')selectedBranch=target.selectedBranch;
-   suppress=true;try{originalGo.call(this,target.page,true)}finally{setTimeout(()=>{suppress=false},0)}
-   try{history.pushState({tnHubGuard:true},'',location.href)}catch(_){}
- };
- // Keep the approved five-item mobile navigation active-state in sync with the current section.
- const oldRender=window.render;
- if(typeof oldRender==='function')window.render=function(){const result=oldRender.apply(this,arguments);return result};
-})();
-</script>
 
 </body>
 </html>
