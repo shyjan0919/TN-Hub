@@ -862,7 +862,7 @@ function go(p,fromPop=false){
  else if(['tasksHub','profileHub','businessReportHub'].includes(p)) appBackParent=page==='appsHub'?'appsHub':'dashboard';
  else appBackParent='appsHub';
  try{sessionStorage.setItem('tnhub.appBackParent',appBackParent)}catch(e){}
- if(['dashboard','domDashboard','romDashboard'].includes(p)){selectedDivision='ALL';selectedRom='ALL';selectedBranch='ALL';dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom'}page=p;document.querySelector('.side')?.classList.remove('open');try{render()}catch(err){console.error('TN HUB page render failed:',p,err);if(p==='analytics3'){alert('Predictive Analytics could not open. Error: '+(err&&err.message?err.message:String(err))+'\nPlease share this message with support.');page='dashboard';try{render()}catch(_){}}else{throw err}}window.scrollTo({top:0,behavior:'instant'});saveCurrentView();installBackGuard()}
+ if(['dashboard','domDashboard','romDashboard'].includes(p)){selectedDivision='ALL';selectedRom='ALL';selectedBranch='ALL';dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom'}page=p;window.scrollTo({top:0,left:0,behavior:'instant'});document.querySelector('.side')?.classList.remove('open');try{render()}catch(err){console.error('TN HUB page render failed:',p,err);if(p==='analytics3'){alert('Predictive Analytics could not open. Error: '+(err&&err.message?err.message:String(err))+'\nPlease share this message with support.');page='dashboard';try{render()}catch(_){}}else{throw err}}window.scrollTo({top:0,left:0,behavior:'instant'});requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'instant'}));saveCurrentView();installBackGuard()}
 function installBackGuard(){if(backGuardInstalled)return;try{history.pushState({tnHubGuard:true},'',location.href);backGuardInstalled=true}catch(e){}}
 function saveCurrentView(){try{sessionStorage.setItem('tnhub.currentPage',String(page||'dashboard'));sessionStorage.setItem('tnhub.selectedBranch',String(typeof selectedBranch!=='undefined'?selectedBranch:'ALL'));sessionStorage.setItem('tnhub.dashboardDrillLevel',String(typeof dashboardDrillLevel!=='undefined'?dashboardDrillLevel:'division'));sessionStorage.setItem('tnhub.date',String(date||''));sessionStorage.setItem('tnhub.month',String(month||''))}catch(e){}}
 window.addEventListener('beforeunload',saveCurrentView);
@@ -975,9 +975,16 @@ async function refreshData(){if(!user)return;const names=['organizationMappings'
  window.collectionErrors=[...results.filter(x=>x[2]).map(([name,rows,error])=>({name,...error})),...(window.__contestLoadError?[window.__contestLoadError]:[])];
 }
 async function afterAuth(fu){try{stopRealtime();await loadProfile(fu);await refreshData();
- const savedPage=sessionStorage.getItem('tnhub.currentPage')||'dashboard';
- const validRoutes=['dashboard','appsHub','tasksHub','profileHub','businessReportHub','statePerformance','intelligence','actionPlan','analytics3','branchYtd','domDashboard','romDashboard','reports','calling','performance','reviews','cih','history','targets','mapping','bases','bod','eod','glp','branchReview','users','reset','approvals','quality','contests'];
- page=validRoutes.includes(savedPage)?savedPage:'dashboard';
+ // Every fresh login starts a clean workspace on today's reporting date.
+ // Do not restore an old page, date, month, branch drill-down or saved scroll context.
+ page='dashboard';
+ date=today();
+ month=date.slice(0,7);
+ selectedBranch='ALL';
+ selectedDivision='ALL';
+ selectedRom='ALL';
+ dashboardDrillLevel=roleIs('ZOH','SYSTEM_ADMIN')?'division':'rom';
+ try{['tnhub.currentPage','tnhub.selectedBranch','tnhub.dashboardDrillLevel','tnhub.date','tnhub.month','tnhub.appBackParent'].forEach(k=>sessionStorage.removeItem(k));}catch(_){}
  if(!roleIs('ZOH','SYSTEM_ADMIN')&&!allowedPages().some(([k])=>k===page)&&!['dashboard','appsHub','tasksHub','profileHub','businessReportHub'].includes(page))page='dashboard';
  appBackParent=page==='appsHub'?'dashboard':(sessionStorage.getItem('tnhub.appBackParent')==='appsHub'?'appsHub':'dashboard');
  if(typeof selectedBranch!=='undefined')selectedBranch=sessionStorage.getItem('tnhub.selectedBranch')||'ALL';
