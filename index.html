@@ -722,7 +722,24 @@ body:has(#root .main) { overflow-x:hidden !important; }
  .loginpage.tnh-login-page .tnh-signin-btn { min-height:38px !important; }
 }
 </style>
-</head>
+<style id="tnhub-mobile-navigation-final">
+@media(max-width:900px){
+.mobile-bottom-nav{position:fixed!important;left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;width:auto!important;min-height:70px!important;height:70px!important;padding:6px 5px!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;align-items:center!important;gap:2px!important;border-radius:19px!important;background:rgba(23,54,107,.91)!important;border:1px solid rgba(255,255,255,.33)!important;box-shadow:0 8px 26px rgba(12,35,76,.22)!important;backdrop-filter:blur(18px) saturate(145%)!important;-webkit-backdrop-filter:blur(18px) saturate(145%)!important;overflow:visible!important;transform:none!important}
+.mobile-bottom-nav::before,.mobile-bottom-nav::after{display:none!important;content:none!important}
+.mobile-bottom-nav button,.mobile-bottom-nav button.quick-action-main{position:relative!important;transform:none!important;margin:0!important;min-width:0!important;min-height:56px!important;height:56px!important;padding:5px 1px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;border:0!important;border-radius:12px!important;background:transparent!important;box-shadow:none!important;color:#fff!important;font-size:10px!important;font-weight:650!important;line-height:1!important;overflow:hidden!important}
+.mobile-bottom-nav button .bottom-icon{font-size:25px!important;line-height:26px!important;color:inherit!important;transform:none!important}
+.mobile-bottom-nav button span:last-child{font-size:clamp(8px,2.3vw,11px)!important;line-height:13px!important;white-space:nowrap!important;letter-spacing:-.2px!important}
+.mobile-bottom-nav button.quick-action-main .quick-plus{width:30px!important;height:30px!important;min-height:30px!important;flex:0 0 30px!important;margin:0!important;border:1px solid rgba(255,255,255,.35)!important;border-radius:10px!important;background:linear-gradient(140deg,#f2dda8,#d8b466)!important;color:#17366b!important;font-size:25px!important;line-height:26px!important;box-shadow:none!important;transform:none!important}
+.mobile-bottom-nav button.active{background:rgba(255,255,255,.15)!important;box-shadow:inset 0 -2px 0 #e2c17a!important}
+.mobile-bottom-nav button.active .bottom-icon{color:#f2d58b!important}
+body{padding-bottom:calc(95px + env(safe-area-inset-bottom))!important}
+#root,.main,.content{min-width:0!important}
+.hub-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.hub-shortcut{min-width:0!important;overflow-wrap:anywhere!important}
+.tablewrap{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
+}
+@media(max-width:370px){.mobile-bottom-nav{left:5px!important;right:5px!important}.mobile-bottom-nav button span:last-child{font-size:8px!important}}
+</style></head>
 <body><div id="root"><div style="min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#f7faff,#edf5ff);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#10264d;text-align:center"><div style="max-width:360px;background:#fff;border:1px solid #dce8f6;border-radius:18px;padding:26px;box-shadow:0 10px 35px #0b3b7410"><div style="font-size:28px;margin-bottom:10px">📊</div><h2 style="margin:0 0 8px">TN State HUB</h2><p style="margin:0;color:#60728f;font-size:14px">Opening your workspace…</p><p style="margin:12px 0 0;color:#8492a6;font-size:12px">Please wait while the secure connection starts.</p></div></div></div>
 <script>
 'use strict';
@@ -2527,7 +2544,23 @@ auth.onAuthStateChanged(fu=>{if(window.__tnHubBoot){window.__tnHubBoot.authReady
 .mobile-bottom-nav button.active .bottom-icon{color:var(--tn-royal-gold)!important}
 @media(min-width:901px){#root .layout{height:calc(100dvh - 72px)!important}#root .side{height:100%!important;overflow-y:auto!important}#root .main{height:100%!important;overflow-y:auto!important;overscroll-behavior:contain!important}}
 </style>
-<script id="tnhub-startup-recovery">(function(){window.__tnHubBoot=window.__tnHubBoot||{startedAt:Date.now(),authReady:false};window.__tnHubRecoveryTimer=setTimeout(function(){if(window.__tnHubBoot.authReady||window.user)return;var root=document.getElementById('root');if(!root)return;var box=document.getElementById('tnhub-startup-recovery-message');if(box)return;box=document.createElement('div');box.id='tnhub-startup-recovery-message';box.style.cssText='position:fixed;z-index:99999;inset:auto 14px 14px 14px;padding:14px 16px;background:#fff;border:1px solid #d7e1ef;border-radius:14px;box-shadow:0 8px 28px #10275022;color:#17366b;font:14px system-ui';box.innerHTML='<b>Still connecting to TN State HUB</b><div style="margin-top:5px;color:#64748b">Check your internet connection and reload. If this continues, Firebase services may be temporarily unavailable.</div><button onclick="location.reload()" style="margin-top:10px;background:#17366b;color:#fff;border:0;border-radius:8px;padding:8px 13px">Retry</button>';document.body.appendChild(box);},20000);})();</script></body></html>`);win.document.close();
+<script id="tnhub-startup-recovery">(function(){window.__tnHubBoot=window.__tnHubBoot||{startedAt:Date.now(),authReady:false};window.__tnHubRecoveryTimer=setTimeout(function(){if(window.__tnHubBoot.authReady||window.user)return;var root=document.getElementById('root');if(!root)return;var box=document.getElementById('tnhub-startup-recovery-message');if(box)return;box=document.createElement('div');box.id='tnhub-startup-recovery-message';box.style.cssText='position:fixed;z-index:99999;inset:auto 14px 14px 14px;padding:14px 16px;background:#fff;border:1px solid #d7e1ef;border-radius:14px;box-shadow:0 8px 28px #10275022;color:#17366b;font:14px system-ui';box.innerHTML='<b>Still connecting to TN State HUB</b><div style="margin-top:5px;color:#64748b">Check your internet connection and reload. If this continues, Firebase services may be temporarily unavailable.</div><button onclick="location.reload()" style="margin-top:10px;background:#17366b;color:#fff;border:0;border-radius:8px;padding:8px 13px">Retry</button>';document.body.appendChild(box);},20000);})();</script><script id="tnhub-mobile-feature-access-final">
+(function(){
+  function extendAppsHub(){
+    if(typeof appsHubPage!=='function'||typeof allowedPages!=='function'||typeof hubCard!=='function')return;
+    const previous=appsHubPage;
+    appsHubPage=function(){
+      const original=previous();
+      const permitted=allowedPages();
+      const omitted=new Set(['dashboard','appsHub','profileHub','tasksHub','businessReportHub']);
+      const additional=permitted.filter(([key])=>!omitted.has(key));
+      const cards=additional.map(([key,label])=>hubCard(key,label,'Open authorized workspace','◈')).join('');
+      return original+'<section class="card" id="mobile-all-features" style="margin-top:16px"><div class="section"><div><h3>All Available Features</h3></div></div><div class="hub-grid">'+cards+'</div></section>';
+    };
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',extendAppsHub,{once:true});else extendAppsHub();
+})();
+</script></body></html>`);win.document.close();
 }
 
 function exportZohReport(){if(!roleIs('ZOH','SYSTEM_ADMIN'))return alert('ZOH access required.');const {start,end}=reportWindow(),bs=reportScopeBranches(),codes=new Set(bs.map(b=&gt;String(b.branchCode))),rows=[['Period',reportPeriod],['Start date',start],['End date',end],['View',reportLevel],[],['Division','Region/ROM','Branch code','Branch name','Metric','Unit','Commitment','Achieved','Gap','Achievement %','BOD date','EOD date']];for(const b of bs){for(const m of METRICS){const c=bod.filter(x=&gt;String(x.branchCode)===String(b.branchCode)&amp;&amp;x.metric===m&amp;&amp;x.date&gt;=start&amp;&amp;x.date&lt;=end).reduce((a,x)=&gt;a+n(x.amount),0),a=eod.filter(x=&gt;String(x.branchCode)===String(b.branchCode)&amp;&amp;x.metric===m&amp;&amp;x.date&gt;=start&amp;&amp;x.date&lt;=end).reduce((z,x)=&gt;z+n(x.actual),0),bd=bod.some(x=&gt;String(x.branchCode)===String(b.branchCode)&amp;&amp;x.metric===m&amp;&amp;x.date&gt;=start&amp;&amp;x.date&lt;=end),ed=eod.some(x=&gt;String(x.branchCode)===String(b.branchCode)&amp;&amp;x.metric===m&amp;&amp;x.date&gt;=start&amp;&amp;x.date&lt;=end);rows.push([b.divisionId||'',b.regionId||b.romCode||'',b.branchCode,b.branchName||b.name||'',m,metricUnit(m),c,a,c-a,c?(a/c*100).toFixed(1):0,bd?'Submitted':'Missing',ed?'Closed':'Pending'])}}const csv=rows.map(r=&gt;r.map(v=&gt;'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`TN_State_HUB_${reportPeriod}_report_${start}_to_${end}.csv`;a.click();URL.revokeObjectURL(url)}
